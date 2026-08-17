@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan de Fuerza · Semestre</title>
+<style>
+  :root{
+    --ink:#141210;
+    --paper:#f2ece1;
+    --paper-2:#e8dfcf;
+    --line:#d3c6ae;
+    --steel:#2b4b5c;
+    --steel-2:#3f6b80;
+    --rust:#b5502e;
+    --rust-soft:#c96a44;
+    --moss:#5b6b3a;
+    --gold:#c08a2d;
+    --muted:#7d7264;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
+
+  /* HERO */
+  header.hero{
+    border-bottom:2px solid var(--ink);
+    padding:48px 0 28px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .wrap{position:relative;z-index:2}
+  .eyebrow{
+    font-family:"Courier New",monospace;
+    text-transform:uppercase;
+    letter-spacing:.28em;
+    font-size:11px;
+    color:var(--rust);
+    font-weight:700;
+  }
+  h1{
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:clamp(40px,9vw,86px);
+    line-height:.92;
+    font-weight:800;
+    letter-spacing:-.02em;
+    margin:10px 0 6px;
+  }
+  h1 em{font-style:italic;color:var(--rust)}
+  .sub{
+    font-family:"Courier New",monospace;
+    font-size:13px;
+    color:var(--muted);
+    letter-spacing:.02em;
+  }
+  .statline{
+    display:flex;gap:0;flex-wrap:wrap;
+    margin-top:26px;
+    border:1.5px solid var(--ink);
+  }
+  .statline .cell{
+    flex:1 1 25%;
+    min-width:120px;
+    padding:12px 16px;
+    border-right:1.5px solid var(--ink);
+  }
+  .statline .cell:last-child{border-right:none}
+  .statline .k{font-family:"Courier New",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+  .statline .v{font-family:Georgia,serif;font-size:24px;font-weight:700;margin-top:2px}
+  .statline .v small{font-size:13px;color:var(--muted);font-weight:400}
+
+  /* NAV */
+  nav.days{
+    position:sticky;top:0;z-index:10;
+    background:var(--paper);
+    border-bottom:1.5px solid var(--ink);
+    padding:10px 0;
+  }
+  nav.days .wrap{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+  nav.days .wrap::-webkit-scrollbar{display:none}
+  .tab{
+    flex:0 0 auto;
+    border:1.5px solid var(--ink);
+    background:transparent;
+    color:var(--ink);
+    font-family:"Courier New",monospace;
+    font-size:12px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    padding:8px 14px;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:all .15s;
+  }
+  .tab:hover{background:var(--paper-2)}
+  .tab.active{background:var(--ink);color:var(--paper)}
+
+  /* SECTIONS */
+  section{padding:38px 0;border-bottom:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+  .sec-num{font-family:"Courier New",monospace;font-size:12px;color:var(--rust);font-weight:700}
+  h2{font-family:Georgia,serif;font-size:clamp(26px,5vw,40px);font-weight:800;letter-spacing:-.01em}
+  .sec-tag{font-family:"Courier New",monospace;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.14em;margin-bottom:22px}
+  .split-badge{
+    display:inline-block;
+    font-family:"Courier New",monospace;
+    font-size:10px;letter-spacing:.12em;
+    text-transform:uppercase;
+    padding:3px 8px;border-radius:2px;
+    margin-left:8px;color:#fff;
+  }
+  .b-upper{background:var(--steel)}
+  .b-lower{background:var(--moss)}
+
+  /* EXERCISE CARD */
+  .grid{display:grid;grid-template-columns:1fr;gap:16px}
+  .ex{
+    display:grid;
+    grid-template-columns:120px 1fr;
+    border:1.5px solid var(--ink);
+    background:var(--paper-2);
+    overflow:hidden;
+  }
+  .ex-fig{
+    background:var(--paper);
+    border-right:1.5px solid var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    padding:8px;position:relative;
+  }
+  .ex-fig svg{width:100%;height:auto;display:block}
+  .ex-fig img{width:100%;height:auto;display:block;mix-blend-mode:multiply}
+  .ex-fig .cred{
+    position:absolute;bottom:2px;left:4px;right:4px;
+    font-family:"Courier New",monospace;font-size:7px;line-height:1.1;
+    color:var(--muted);text-align:center;opacity:.75;
+  }
+  .ex-fig .spin{
+    width:22px;height:22px;border:3px solid var(--line);
+    border-top-color:var(--rust);border-radius:50%;
+    animation:sp .8s linear infinite;
+  }
+  @keyframes sp{to{transform:rotate(360deg)}}
+  .ex-body{padding:14px 16px}
+  .ex-name{font-family:Georgia,serif;font-size:19px;font-weight:700;line-height:1.1}
+  .ex-target{font-family:"Courier New",monospace;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--rust);margin-top:3px}
+  .ex-sets{
+    display:inline-flex;gap:14px;margin-top:10px;
+    font-family:"Courier New",monospace;font-size:13px;
+  }
+  .ex-sets b{font-size:18px;font-family:Georgia,serif}
+  .ex-note{font-size:13px;color:var(--muted);margin-top:9px;line-height:1.45}
+  .ex-vid{
+    display:inline-flex;align-items:center;gap:6px;margin-top:11px;
+    border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);
+    font-family:"Courier New",monospace;font-size:11px;letter-spacing:.06em;
+    text-transform:uppercase;text-decoration:none;padding:6px 11px;
+    transition:all .15s;
+  }
+  .ex-vid:hover{background:var(--rust);border-color:var(--rust)}
+  .ex-vid svg{width:12px;height:12px}
+  @media(max-width:520px){
+    .ex{grid-template-columns:104px 1fr}
+    .ex-fig{padding:5px}
+  }
+
+  /* SUPP + DIET */
+  .callout{
+    border:1.5px solid var(--ink);
+    background:var(--paper-2);
+    padding:20px;
+    margin-bottom:16px;
+  }
+  .callout h3{font-family:Georgia,serif;font-size:22px;margin-bottom:4px}
+  .callout .lead{font-family:"Courier New",monospace;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--rust);margin-bottom:12px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+  th{font-family:"Courier New",monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:400}
+  td.num{text-align:right;font-family:Georgia,serif;font-weight:700}
+  .tip{font-size:14px;line-height:1.5;margin-top:8px}
+  .tip strong{color:var(--rust)}
+
+  .macrobar{display:flex;height:26px;border:1.5px solid var(--ink);margin:14px 0 6px;overflow:hidden}
+  .macrobar div{display:flex;align-items:center;justify-content:center;font-family:"Courier New",monospace;font-size:10px;color:#fff;letter-spacing:.05em}
+  .m-p{background:var(--rust)}
+  .m-c{background:var(--steel)}
+  .m-f{background:var(--gold)}
+  .macrolabel{display:flex;gap:16px;font-family:"Courier New",monospace;font-size:11px;color:var(--muted);flex-wrap:wrap}
+  .dot{display:inline-block;width:9px;height:9px;margin-right:5px;vertical-align:middle}
+
+  footer{padding:30px 0 50px;font-family:"Courier New",monospace;font-size:11px;color:var(--muted);text-align:center;line-height:1.7}
+
+  /* ---- registro de progreso ---- */
+  .logbar{display:flex;gap:14px;align-items:flex-end;flex-wrap:wrap;margin-top:6px}
+  .logbar label{font-family:"Courier New",monospace;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+  .logbar input{
+    font-family:Georgia,serif;font-size:18px;padding:8px 10px;
+    border:1.5px solid var(--ink);background:var(--paper);color:var(--ink);width:130px;
+  }
+  .save-btn,.clear-btn{
+    font-family:"Courier New",monospace;font-size:12px;text-transform:uppercase;letter-spacing:.08em;
+    border:1.5px solid var(--ink);padding:10px 16px;cursor:pointer;transition:all .15s;
+  }
+  .save-btn{background:var(--ink);color:var(--paper)}
+  .save-btn:hover{background:var(--moss);border-color:var(--moss)}
+  .clear-btn{background:transparent;color:var(--rust);border-color:var(--rust);margin-top:12px;font-size:10px;padding:6px 12px}
+  .clear-btn:hover{background:var(--rust);color:#fff}
+  .log-msg{font-family:"Courier New",monospace;font-size:12px;color:var(--moss);margin-top:10px;min-height:16px}
+  .log-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--line)}
+  .log-row span{font-size:14px}
+  .log-row input{font-family:Georgia,serif;font-size:16px;padding:5px 8px;border:1.5px solid var(--line);background:var(--paper);width:90px;text-align:right}
+  .hist-week{border:1.5px solid var(--line);padding:12px 14px;margin-bottom:10px}
+  .hist-week h4{font-family:Georgia,serif;font-size:17px;margin-bottom:6px}
+  .hist-week table{margin:0}
+  .hist-week td{padding:4px 8px;font-size:13px;border-bottom:1px solid var(--paper-2)}
+  .hist-empty{font-family:"Courier New",monospace;font-size:12px;color:var(--muted);padding:8px 0}
+  .delta-up{color:var(--moss);font-weight:700}
+  .delta-flat{color:var(--muted)}
+  .hidden{display:none}
+  a{color:var(--rust)}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Plan personal · 4 días/semana · Hipertrofia + Fuerza</div>
+    <h1>Ganar <em>músculo</em>,<br>no solo peso.</h1>
+    <div class="sub">Objetivo del semestre: constancia · +5 kg · más fuerza</div>
+    <div class="statline">
+      <div class="cell"><div class="k">Inicio</div><div class="v">51 <small>kg</small></div></div>
+      <div class="cell"><div class="k">Meta</div><div class="v">56+ <small>kg</small></div></div>
+      <div class="cell"><div class="k">Calorías/día</div><div class="v">2,750</div></div>
+      <div class="cell"><div class="k">Proteína/día</div><div class="v">105 <small>g</small></div></div>
+    </div>
+  </div>
+</header>
+
+<nav class="days">
+  <div class="wrap">
+    <button class="tab active" data-view="d1">Lun · Upper A</button>
+    <button class="tab" data-view="d2">Mar · Lower A</button>
+    <button class="tab" data-view="d4">Jue · Upper B</button>
+    <button class="tab" data-view="d5">Vie · Lower B</button>
+    <button class="tab" data-view="diet">Dieta</button>
+    <button class="tab" data-view="supp">Suplementos</button>
+    <button class="tab" data-view="log">Progreso</button>
+  </div>
+</nav>
+
+<!-- ============ DÍA 1 UPPER A ============ -->
+<section class="view" id="d1">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">DÍA 01</span><h2>Upper A<span class="split-badge b-upper">Empuje + Jalón</span></h2></div>
+    <div class="sec-tag">Pecho · Espalda · Hombro · Brazos — descansa 2 min entre series pesadas</div>
+    <div class="grid" id="grid-d1"></div>
+  </div>
+</section>
+
+<!-- ============ DÍA 2 LOWER A ============ -->
+<section class="view hidden" id="d2">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">DÍA 02</span><h2>Lower A<span class="split-badge b-lower">Sentadilla dominante</span></h2></div>
+    <div class="sec-tag">Cuádriceps · Glúteo · Femoral · Core</div>
+    <div class="grid" id="grid-d2"></div>
+  </div>
+</section>
+
+<!-- ============ DÍA 4 UPPER B ============ -->
+<section class="view hidden" id="d4">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">DÍA 03</span><h2>Upper B<span class="split-badge b-upper">Inclinado + Hombro</span></h2></div>
+    <div class="sec-tag">Más volumen de hombro y espalda alta que el día A</div>
+    <div class="grid" id="grid-d4"></div>
+  </div>
+</section>
+
+<!-- ============ DÍA 5 LOWER B ============ -->
+<section class="view hidden" id="d5">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">DÍA 04</span><h2>Lower B<span class="split-badge b-lower">Peso muerto dominante</span></h2></div>
+    <div class="sec-tag">Cadena posterior · zancadas · pantorrilla</div>
+    <div class="grid" id="grid-d5"></div>
+  </div>
+</section>
+
+<!-- ============ DIETA ============ -->
+<section class="view hidden" id="diet">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">FUEL</span><h2>Dieta · las calorías</h2></div>
+    <div class="sec-tag">Comes lo mismo que tu novia — solo agregas porciones y extras para llegar al número</div>
+
+    <div class="callout">
+      <div class="lead">Tu número del día</div>
+      <h3>2,750 kcal — superávit de ~500</h3>
+      <p class="tip">Tu cuerpo gasta ~2,250 kcal/día. Comer 500 de más es lo que construye músculo semana a semana. Si en 2 semanas no subes ~0.25–0.5 kg, suma 150 kcal.</p>
+
+      <div class="macrobar">
+        <div class="m-p" style="flex:0 0 21%">P 105g</div>
+        <div class="m-c" style="flex:0 0 51%">Carbos 340g</div>
+        <div class="m-f" style="flex:0 0 28%">Grasa 78g</div>
+      </div>
+      <div class="macrolabel">
+        <span><span class="dot m-p"></span>Proteína · 420 kcal</span>
+        <span><span class="dot m-c"></span>Carbohidratos · 1,360 kcal</span>
+        <span><span class="dot m-f"></span>Grasa · 700 kcal</span>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="lead">Cómo llegar sin cocinar aparte</div>
+      <table>
+        <tr><th>Palanca fácil</th><th>Suma aprox.</th></tr>
+        <tr><td>Porción más grande de arroz/pasta/tortilla</td><td class="num">+250</td></tr>
+        <tr><td>1 scoop de Mutant Mass (post-entreno)</td><td class="num">+670</td></tr>
+        <tr><td>Puño de nueces / cacahuate / crema de maní</td><td class="num">+200</td></tr>
+        <tr><td>Chorro extra de aceite de oliva o aguacate</td><td class="num">+150</td></tr>
+        <tr><td>Avena con leche + plátano en el desayuno</td><td class="num">+350</td></tr>
+      </table>
+      <p class="tip"><strong>Regla:</strong> proteína en cada comida (huevo, pollo, res, atún, lácteos). Apunta a ~25–30 g de proteína por comida × 4 = tu meta cubierta.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUPLEMENTOS ============ -->
+<section class="view hidden" id="supp">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">STACK</span><h2>Tus suplementos</h2></div>
+    <div class="sec-tag">Lo que ya tienes y cómo usarlo bien</div>
+
+    <div class="callout">
+      <div class="lead">Mass Gainer · la calculadora honesta</div>
+      <h3>Mutant Mass Extreme 2500</h3>
+      <p class="tip">Es un <strong>ganador de peso</strong>: su trabajo es meter calorías rápido, no ser proteína limpia. Buena parte viene de carbohidratos.</p>
+      <table>
+        <tr><th>Métrica</th><th>Dosis full (2 scoops)</th><th>Media dosis ★</th></tr>
+        <tr><td>Calorías</td><td class="num">1,340</td><td class="num">670</td></tr>
+        <tr><td>Proteína</td><td class="num">56 g</td><td class="num">28 g</td></tr>
+        <tr><td>Carbohidratos</td><td class="num">244 g</td><td class="num">122 g</td></tr>
+        <tr><td>Grasa</td><td class="num">15 g</td><td class="num">7.5 g</td></tr>
+      </table>
+      <p class="tip">★ <strong>Usa media dosis (1 scoop).</strong> La dosis completa llena tanto que te saltas comida real — donde están tus vitaminas y fibra. Tómalo post-entreno o entre clases. Es una <strong>muleta calórica</strong>, no la base de tu dieta.</p>
+    </div>
+
+    <div class="callout">
+      <div class="lead">El suplemento con más evidencia que existe</div>
+      <h3>Creatina Monohidratada · Birdman</h3>
+      <table>
+        <tr><td>Dosis</td><td class="num">5 g / día</td></tr>
+        <tr><td>Cuándo</td><td class="num">Todos los días</td></tr>
+        <tr><td>Fase de carga</td><td class="num">No hace falta</td></tr>
+      </table>
+      <p class="tip">5 g con agua, <strong>entrenes o no</strong>, a cualquier hora. Lo único que importa es la constancia — tarda ~3 semanas en saturar el músculo. Ayuda a fuerza y a retener agua intramuscular (te ves y rindes mejor). Toma suficiente agua en el día.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROGRESO / REGISTRO DE PESOS ============ -->
+<section class="view hidden" id="log">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">TRACK</span><h2>Progreso · tus pesos</h2></div>
+    <div class="sec-tag">Anota cuánto levantaste cada semana. Se guarda en tu navegador — no se borra al cerrar.</div>
+
+    <div class="callout" style="padding:16px 20px">
+      <div class="lead">Semana a registrar</div>
+      <div class="logbar">
+        <label>Semana
+          <input type="number" id="weekNum" min="1" value="1">
+        </label>
+        <label>Tu peso corporal (kg)
+          <input type="number" id="bodyW" step="0.1" placeholder="51.0">
+        </label>
+        <button id="saveLog" class="save-btn">Guardar semana</button>
+      </div>
+      <div id="logMsg" class="log-msg"></div>
+    </div>
+
+    <div class="callout" style="padding:16px 20px">
+      <div class="lead">Peso levantado por ejercicio (kg)</div>
+      <div class="sec-tag" style="margin:0 0 8px">Apunta el peso más pesado que hiciste con buena técnica. Deja en blanco lo que no entrenes.</div>
+      <div id="logInputs"></div>
+    </div>
+
+    <div class="callout" style="padding:16px 20px">
+      <div class="lead">Historial guardado</div>
+      <div id="history"></div>
+      <button id="clearLog" class="clear-btn">Borrar todo el historial</button>
+    </div>
+  </div>
+</section>
+
+
+  <div class="wrap">
+    PROGRESIÓN: cuando completes todas las series con buena técnica, sube peso la próxima semana.<br>
+    Pésate 1×/semana, misma hora. · Descansa Mié / Sáb / Dom.<br>
+    Imágenes de ejercicios: <a href="https://wger.de" target="_blank" rel="noopener">wger.de</a> · CC-BY-SA · Videos: YouTube<br>
+    Hecho para ti · edítalo libremente
+  </div>
+</footer>
+
+<script>
+/* ---------- ILUSTRACIONES SVG (figura haciendo cada ejercicio) ---------- */
+const F = {}; // biblioteca de figuras
+const C = { body:'#2b4b5c', bar:'#141210', accent:'#b5502e', plate:'#b5502e' };
+
+function svg(inner){
+  return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round">${inner}</svg>`;
+}
+const BODY = C.body, BAR = C.bar, ACC = C.accent;
+const s = (w)=>`stroke="${BODY}" stroke-width="${w||4}" fill="none"`;
+
+/* Bench press */
+F.bench = svg(`
+  <rect x="20" y="62" width="52" height="6" fill="${BAR}"/>
+  <line x1="26" y1="68" x2="26" y2="82" stroke="${BAR}" stroke-width="3"/>
+  <line x1="66" y1="68" x2="66" y2="82" stroke="${BAR}" stroke-width="3"/>
+  <circle cx="44" cy="55" r="6" ${s(4)}/>
+  <path d="M44 61 L44 62" ${s(4)}/>
+  <path d="M30 62 L58 62" ${s(4)}/>
+  <path d="M32 62 L26 45 M56 62 L62 45" ${s(4)}/>
+  <line x1="20" y1="40" x2="68" y2="40" stroke="${BAR}" stroke-width="4"/>
+  <rect x="16" y="33" width="6" height="14" fill="${ACC}"/>
+  <rect x="66" y="33" width="6" height="14" fill="${ACC}"/>
+`);
+/* Barbell row */
+F.row = svg(`
+  <circle cx="40" cy="30" r="6" ${s(4)}/>
+  <path d="M40 36 Q46 46 60 48" ${s(4)}/>
+  <path d="M42 40 L28 44 M42 42 L56 44" ${s(4)}/>
+  <path d="M60 48 L50 74 M60 48 L66 74" ${s(4)}/>
+  <line x1="22" y1="52" x2="58" y2="52" stroke="${BAR}" stroke-width="4"/>
+  <rect x="18" y="45" width="6" height="14" fill="${ACC}"/>
+  <rect x="56" y="45" width="6" height="14" fill="${ACC}"/>
+`);
+/* Overhead press */
+F.ohp = svg(`
+  <line x1="24" y1="26" x2="76" y2="26" stroke="${BAR}" stroke-width="4"/>
+  <rect x="20" y="19" width="6" height="14" fill="${ACC}"/>
+  <rect x="74" y="19" width="6" height="14" fill="${ACC}"/>
+  <circle cx="50" cy="44" r="6" ${s(4)}/>
+  <path d="M50 50 L50 70" ${s(4)}/>
+  <path d="M50 52 L38 30 M50 52 L62 30" ${s(4)}/>
+  <path d="M50 70 L42 86 M50 70 L58 86" ${s(4)}/>
+`);
+/* Lat pulldown */
+F.pulldown = svg(`
+  <line x1="30" y1="20" x2="70" y2="20" stroke="${BAR}" stroke-width="4"/>
+  <circle cx="50" cy="46" r="6" ${s(4)}/>
+  <path d="M50 40 L36 20 M50 40 L64 20" ${s(4)}/>
+  <path d="M50 52 L50 72" ${s(4)}/>
+  <path d="M50 72 L42 86 M50 72 L58 86" ${s(4)}/>
+  <path d="M42 60 L58 60" ${s(4)}/>
+`);
+/* Incline press */
+F.incline = svg(`
+  <line x1="22" y1="70" x2="70" y2="40" stroke="${BAR}" stroke-width="5"/>
+  <circle cx="46" cy="52" r="6" ${s(4)}/>
+  <path d="M46 58 L36 70" ${s(4)}/>
+  <path d="M48 48 L60 34 M44 50 L58 40" ${s(4)}/>
+  <line x1="52" y1="24" x2="72" y2="46" stroke="${BAR}" stroke-width="4"/>
+  <rect x="50" y="20" width="6" height="10" fill="${ACC}" transform="rotate(45 53 25)"/>
+`);
+/* Lateral raise */
+F.lateral = svg(`
+  <circle cx="50" cy="30" r="6" ${s(4)}/>
+  <path d="M50 36 L50 66" ${s(4)}/>
+  <path d="M50 42 L28 40 M50 42 L72 40" ${s(4)}/>
+  <rect x="20" y="35" width="9" height="10" rx="2" fill="${ACC}"/>
+  <rect x="71" y="35" width="9" height="10" rx="2" fill="${ACC}"/>
+  <path d="M50 66 L42 84 M50 66 L58 84" ${s(4)}/>
+`);
+/* Bicep curl */
+F.curl = svg(`
+  <circle cx="50" cy="28" r="6" ${s(4)}/>
+  <path d="M50 34 L50 64" ${s(4)}/>
+  <path d="M50 40 L36 52 L44 40 M50 40 L64 52 L56 40" ${s(4)}/>
+  <rect x="38" y="34" width="12" height="8" rx="2" fill="${ACC}"/>
+  <rect x="50" y="34" width="12" height="8" rx="2" fill="${ACC}"/>
+  <path d="M50 64 L42 84 M50 64 L58 84" ${s(4)}/>
+`);
+/* Squat */
+F.squat = svg(`
+  <line x1="24" y1="34" x2="76" y2="34" stroke="${BAR}" stroke-width="4"/>
+  <rect x="20" y="27" width="6" height="14" fill="${ACC}"/>
+  <rect x="74" y="27" width="6" height="14" fill="${ACC}"/>
+  <circle cx="50" cy="46" r="6" ${s(4)}/>
+  <path d="M50 52 L50 62" ${s(4)}/>
+  <path d="M50 62 L38 66 L38 82 M50 62 L62 66 L62 82" ${s(4)}/>
+  <path d="M46 40 L40 34 M54 40 L60 34" ${s(4)}/>
+`);
+/* Romanian deadlift */
+F.rdl = svg(`
+  <circle cx="42" cy="30" r="6" ${s(4)}/>
+  <path d="M42 36 Q50 50 66 54" ${s(4)}/>
+  <path d="M66 54 L64 78 M66 54 L54 40" ${s(4)}/>
+  <path d="M64 78 L64 82" ${s(4)}/>
+  <line x1="52" y1="66" x2="80" y2="66" stroke="${BAR}" stroke-width="4"/>
+  <rect x="48" y="59" width="6" height="14" fill="${ACC}"/>
+  <rect x="78" y="59" width="6" height="14" fill="${ACC}"/>
+`);
+/* Leg press */
+F.legpress = svg(`
+  <path d="M22 74 L22 50 L40 40" stroke="${BAR}" stroke-width="4" fill="none"/>
+  <circle cx="34" cy="66" r="6" ${s(4)}/>
+  <path d="M40 62 L54 56 L44 46" ${s(4)}/>
+  <rect x="52" y="40" width="26" height="34" rx="2" fill="none" stroke="${BAR}" stroke-width="4"/>
+  <rect x="60" y="30" width="10" height="10" fill="${ACC}"/>
+`);
+/* Leg curl */
+F.legcurl = svg(`
+  <rect x="20" y="52" width="40" height="7" fill="${BAR}"/>
+  <circle cx="30" cy="46" r="6" ${s(4)}/>
+  <path d="M36 52 L58 52" ${s(4)}/>
+  <path d="M58 52 Q74 52 72 68" ${s(4)}/>
+  <circle cx="72" cy="72" r="5" fill="${ACC}"/>
+`);
+/* Lunge */
+F.lunge = svg(`
+  <circle cx="46" cy="28" r="6" ${s(4)}/>
+  <path d="M46 34 L46 54" ${s(4)}/>
+  <path d="M46 54 L34 62 L34 80 M46 54 L60 66 L72 80" ${s(4)}/>
+  <rect x="30" y="42" width="7" height="9" rx="2" fill="${ACC}"/>
+  <rect x="55" y="42" width="7" height="9" rx="2" fill="${ACC}"/>
+  <path d="M46 40 L34 46 M46 40 L58 46" ${s(4)}/>
+`);
+/* Leg extension */
+F.legext = svg(`
+  <rect x="24" y="40" width="26" height="24" rx="2" fill="none" stroke="${BAR}" stroke-width="4"/>
+  <circle cx="37" cy="52" r="6" ${s(4)}/>
+  <path d="M50 60 L70 44" ${s(4)}/>
+  <circle cx="72" cy="42" r="5" fill="${ACC}"/>
+`);
+/* Calf raise */
+F.calf = svg(`
+  <circle cx="50" cy="26" r="6" ${s(4)}/>
+  <path d="M50 32 L50 64" ${s(4)}/>
+  <path d="M50 64 L50 80" ${s(4)}/>
+  <path d="M50 80 L60 82 L50 82" ${s(4)}/>
+  <path d="M50 40 L38 46 M50 40 L62 46" ${s(4)}/>
+  <rect x="33" y="44" width="7" height="9" rx="2" fill="${ACC}"/>
+  <rect x="60" y="44" width="7" height="9" rx="2" fill="${ACC}"/>
+`);
+/* Plank */
+F.plank = svg(`
+  <circle cx="30" cy="52" r="6" ${s(4)}/>
+  <path d="M35 55 L74 66" ${s(4)}/>
+  <path d="M30 58 L30 70 M40 60 L40 70 M62 63 L74 66" ${s(4)}/>
+  <line x1="24" y1="72" x2="80" y2="72" stroke="${BAR}" stroke-width="3"/>
+`);
+/* Deadlift */
+F.deadlift = svg(`
+  <circle cx="46" cy="30" r="6" ${s(4)}/>
+  <path d="M46 36 Q54 48 58 58" ${s(4)}/>
+  <path d="M58 58 L56 40 M58 58 L58 78" ${s(4)}/>
+  <path d="M58 78 L50 84 M58 78 L66 84" ${s(4)}/>
+  <line x1="34" y1="66" x2="74" y2="66" stroke="${BAR}" stroke-width="4"/>
+  <rect x="30" y="56" width="7" height="20" fill="${ACC}"/>
+  <rect x="72" y="56" width="7" height="20" fill="${ACC}"/>
+`);
+
+/* ---------- DATOS DE RUTINA ----------
+   wger: término que se busca en la API de wger para traer la imagen real
+   yt:   ID del video de YouTube (canal de entrenador/fisio) con la técnica  */
+const DAYS = {
+  d1:[
+    {fig:'bench', name:'Press de banca con barra', target:'Pecho · Tríceps', sets:'4', reps:'6–8', note:'Tu principal para fuerza de empuje. Baja controlado al pecho, empuja fuerte.', wger:'Bench Press Barbell', yt:'rT7DgCr-3pg'},
+    {fig:'row', name:'Remo con barra', target:'Espalda · Bíceps', sets:'4', reps:'8–10', note:'Torso ~45°, jala hacia el ombligo, aprieta la espalda.', wger:'Bent Over Barbell Row', yt:'9efgcAjQe7E'},
+    {fig:'ohp', name:'Press militar de pie', target:'Hombro', sets:'3', reps:'8–10', note:'Core apretado, no arquees la espalda baja.', wger:'Overhead Press Barbell', yt:'2yjwXTZQDDI'},
+    {fig:'pulldown', name:'Jalón al pecho', target:'Dorsales', sets:'3', reps:'10–12', note:'Codos hacia abajo y atrás, no jales con los brazos solo.', wger:'Lat Pulldown', yt:'CAwf7n6Luuc'},
+    {fig:'curl', name:'Curl de bíceps', target:'Bíceps', sets:'3', reps:'10–12', note:'Sin balanceo. Baja lento.', wger:'Biceps Curl Barbell', yt:'kwG2ipFRgfo'},
+  ],
+  d2:[
+    {fig:'squat', name:'Sentadilla con barra', target:'Cuádriceps · Glúteo', sets:'4', reps:'6–8', note:'El ejercicio rey. Baja hasta muslos paralelos, pecho arriba.', wger:'Squats Barbell', yt:'ultWZbUMPL8'},
+    {fig:'rdl', name:'Peso muerto rumano', target:'Femoral · Glúteo', sets:'3', reps:'8–10', note:'Cadera atrás, barra pegada a las piernas, espalda recta.', wger:'Romanian Deadlift', yt:'JCXUYuzwNrM'},
+    {fig:'legpress', name:'Prensa de piernas', target:'Cuádriceps', sets:'3', reps:'10–12', note:'Volumen extra para cuádriceps sin fatigar la espalda.', wger:'Leg Press', yt:'IZxyjW7MPJQ'},
+    {fig:'legcurl', name:'Curl femoral', target:'Femoral', sets:'3', reps:'12', note:'Aprieta arriba, baja lento.', wger:'Leg Curls', yt:'1Tq3QdYUuHs'},
+    {fig:'plank', name:'Plancha', target:'Core', sets:'3', reps:'30–45 s', note:'Cuerpo en línea recta, glúteo y abdomen apretados.', wger:'Plank', yt:'pSHjTRCQxIw'},
+  ],
+  d4:[
+    {fig:'incline', name:'Press inclinado con barra', target:'Pecho alto', sets:'4', reps:'8–10', note:'Banco a 30°. Trabaja la parte superior del pecho.', wger:'Incline Bench Press Barbell', yt:'SrqOu55lrYU'},
+    {fig:'pulldown', name:'Jalón agarre neutro', target:'Espalda', sets:'4', reps:'8–10', note:'Variación de agarre para más grosor de espalda.', wger:'Lat Pulldown', yt:'CAwf7n6Luuc'},
+    {fig:'lateral', name:'Elevaciones laterales', target:'Hombro lateral', sets:'4', reps:'12–15', note:'El ejercicio que da hombros anchos. Sube a la altura del hombro.', wger:'Lateral Raises', yt:'3VcKaXpzqRo'},
+    {fig:'row', name:'Remo en máquina/mancuerna', target:'Espalda media', sets:'3', reps:'10–12', note:'Enfócate en apretar los omóplatos.', wger:'Dumbbell Row', yt:'pYcpY20QaE8'},
+    {fig:'curl', name:'Curl martillo', target:'Bíceps · Antebrazo', sets:'3', reps:'10–12', note:'Agarre neutro (pulgares arriba).', wger:'Hammer Curl', yt:'zC3nLlEvin4'},
+  ],
+  d5:[
+    {fig:'deadlift', name:'Peso muerto convencional', target:'Cadena posterior', sets:'4', reps:'5', note:'Empieza LIGERO y aprende la técnica. Espalda neutra siempre.', wger:'Deadlift Barbell', yt:'op9kVnSso6Q'},
+    {fig:'lunge', name:'Zancadas con mancuernas', target:'Cuádriceps · Glúteo', sets:'3', reps:'10 c/pierna', note:'Paso largo, rodilla trasera casi al piso.', wger:'Dumbbell Lunges', yt:'D7KaRcUTQeE'},
+    {fig:'legext', name:'Extensión de cuádriceps', target:'Cuádriceps', sets:'3', reps:'12–15', note:'Aislamiento, aprieta arriba.', wger:'Leg Extensions', yt:'YyvSfVjQeL0'},
+    {fig:'calf', name:'Elevación de pantorrilla', target:'Pantorrilla', sets:'4', reps:'15', note:'Rango completo, pausa arriba.', wger:'Standing Calf Raises', yt:'JbyjNymZOt0'},
+    {fig:'plank', name:'Plancha lateral', target:'Core / oblicuos', sets:'3', reps:'30 s c/lado', note:'Cadera arriba, cuerpo recto.', wger:'Side Plank', yt:'K2VljzCC16g'},
+  ],
+};
+
+const PLAY = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+
+function render(dayId){
+  const arr = DAYS[dayId]; if(!arr) return;
+  const grid = document.getElementById('grid-'+dayId);
+  if(grid.dataset.done) return;
+  grid.innerHTML = arr.map((e,i)=>`
+    <div class="ex">
+      <div class="ex-fig" id="fig-${dayId}-${i}">
+        <div class="spin"></div>
+      </div>
+      <div class="ex-body">
+        <div class="ex-name">${e.name}</div>
+        <div class="ex-target">${e.target}</div>
+        <div class="ex-sets"><span><b>${e.sets}</b> series</span><span><b>${e.reps}</b> reps</span></div>
+        <div class="ex-note">${e.note}</div>
+        <a class="ex-vid" href="https://www.youtube.com/watch?v=${e.yt}" target="_blank" rel="noopener">${PLAY} Ver técnica</a>
+      </div>
+    </div>`).join('');
+  grid.dataset.done = '1';
+  // dispara la carga de imagen real para cada ejercicio
+  arr.forEach((e,i)=> loadImg(e, document.getElementById('fig-'+dayId+'-'+i)));
+}
+
+/* ---------- IMAGEN REAL DESDE LA API DE WGER (con fallback a SVG) ----------
+   wger es open-source; sus imágenes son CC-BY-SA, por eso mostramos el autor.
+   OJO: dentro del chat de Claude las llamadas de red están bloqueadas, así que
+   aquí SIEMPRE verás el SVG. Al subir el archivo a GitHub Pages sí cargan.     */
+const WGER = 'https://wger.de/api/v2';
+
+function fallbackSVG(fig, box, why){
+  box.innerHTML = (F[fig]||'') + `<div class="cred">${why||'ilustración propia'}</div>`;
+}
+
+async function loadImg(ex, box){
+  if(!box) return;
+  try{
+    // 1) buscar el ejercicio (language=2 = inglés en wger)
+    const sr = await fetch(`${WGER}/exercise/search/?term=${encodeURIComponent(ex.wger)}&language=2&format=json`);
+    if(!sr.ok) throw new Error('search '+sr.status);
+    const sd = await sr.json();
+    const sug = (sd.suggestions && sd.suggestions[0] && sd.suggestions[0].data) || {};
+    const baseId = sug.base_id || sug.id;
+    if(!baseId) throw new Error('sin resultado');
+    // 2) traer imágenes de ese ejercicio (probamos los dos nombres de filtro)
+    let ir = await fetch(`${WGER}/exerciseimage/?exercise_base=${baseId}&format=json`);
+    let idata = ir.ok ? await ir.json() : {results:[]};
+    if(!idata.results || !idata.results.length){
+      ir = await fetch(`${WGER}/exerciseimage/?exercise=${baseId}&format=json`);
+      idata = ir.ok ? await ir.json() : {results:[]};
+    }
+    const main = (idata.results||[]).find(x=>x.is_main) || (idata.results||[])[0];
+    if(!main || !main.image) throw new Error('sin imagen');
+    const author = main.license_author ? ('© '+main.license_author+' · CC-BY-SA') : 'wger · CC-BY-SA';
+    const im = new Image();
+    im.onload = ()=>{ box.innerHTML=''; box.appendChild(im);
+      const c=document.createElement('div'); c.className='cred'; c.textContent=author; box.appendChild(c); };
+    im.onerror = ()=> fallbackSVG(ex.fig, box, 'ilustración propia');
+    im.src = (main.thumbnails && main.thumbnails.medium) ? main.thumbnails.medium : main.image;
+    im.alt = ex.name;
+  }catch(err){
+    // sin conexión, bloqueo de red, o wger sin imagen → dibujo propio
+    fallbackSVG(ex.fig, box, 'ilustración propia');
+  }
+}
+
+/* ---------- REGISTRO DE PESOS (localStorage) ----------
+   localStorage guarda texto en el navegador de forma permanente (no se borra
+   al cerrar la pestaña). Aquí guardamos un objeto por semana convertido a
+   texto con JSON.stringify, y lo leemos de vuelta con JSON.parse.
+   NOTA: dentro del chat de Claude localStorage está bloqueado; funciona al
+   abrir el archivo tú mismo o subirlo a GitHub Pages.                        */
+const STORE_KEY = 'gymProgreso_v1';
+
+// lista plana de todos los ejercicios únicos (por nombre) para los inputs
+const ALL_EX = [];
+Object.values(DAYS).flat().forEach(e=>{ if(!ALL_EX.includes(e.name)) ALL_EX.push(e.name); });
+
+function loadStore(){
+  try{ return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; }
+  catch(_){ return {}; }
+}
+function saveStore(obj){
+  try{ localStorage.setItem(STORE_KEY, JSON.stringify(obj)); return true; }
+  catch(_){ return false; }   // p.ej. bloqueado en el sandbox del chat
+}
+
+// construir los inputs de peso por ejercicio
+function buildInputs(){
+  const box = document.getElementById('logInputs');
+  if(!box) return;
+  box.innerHTML = ALL_EX.map((name,i)=>`
+    <div class="log-row">
+      <span>${name}</span>
+      <input type="number" step="0.5" min="0" placeholder="kg" data-ex="${i}" id="wt-${i}">
+    </div>`).join('');
+}
+
+// pintar el historial guardado, con la diferencia respecto a la semana anterior
+function renderHistory(){
+  const box = document.getElementById('history');
+  if(!box) return;
+  const store = loadStore();
+  const weeks = Object.keys(store).map(Number).sort((a,b)=>b-a); // más reciente primero
+  if(!weeks.length){ box.innerHTML = '<div class="hist-empty">Aún no hay semanas guardadas.</div>'; return; }
+  box.innerHTML = weeks.map(w=>{
+    const rec = store[w];
+    const prev = store[w-1];
+    const rows = Object.keys(rec.lifts||{}).map(name=>{
+      const now = rec.lifts[name];
+      let delta = '';
+      if(prev && prev.lifts && prev.lifts[name]!=null){
+        const d = (now - prev.lifts[name]);
+        if(d>0) delta = `<span class="delta-up">▲ +${d} kg</span>`;
+        else if(d===0) delta = `<span class="delta-flat">= igual</span>`;
+        else delta = `<span class="delta-flat">▼ ${d} kg</span>`;
+      }
+      return `<tr><td>${name}</td><td class="num">${now} kg</td><td>${delta}</td></tr>`;
+    }).join('');
+    const bw = rec.bodyW ? ` · Peso corporal: <b>${rec.bodyW} kg</b>` : '';
+    return `<div class="hist-week">
+      <h4>Semana ${w}${bw}</h4>
+      <table>${rows||'<tr><td class="hist-empty">Sin pesos anotados</td></tr>'}</table>
+    </div>`;
+  }).join('');
+}
+
+// guardar la semana actual
+function wireLog(){
+  const saveBtn = document.getElementById('saveLog');
+  const clearBtn = document.getElementById('clearLog');
+  if(!saveBtn) return;
+
+  saveBtn.addEventListener('click', ()=>{
+    const week = parseInt(document.getElementById('weekNum').value,10);
+    const msg = document.getElementById('logMsg');
+    if(!week){ msg.style.color='var(--rust)'; msg.textContent='Pon un número de semana.'; return; }
+    const bodyW = parseFloat(document.getElementById('bodyW').value) || null;
+    const lifts = {};
+    ALL_EX.forEach((name,i)=>{
+      const v = parseFloat(document.getElementById('wt-'+i).value);
+      if(!isNaN(v)) lifts[name] = v;
+    });
+    const store = loadStore();
+    store[week] = { bodyW, lifts, ts: Date.now() };
+    const ok = saveStore(store);
+    if(ok){
+      msg.style.color='var(--moss)';
+      msg.textContent = `✓ Semana ${week} guardada (${Object.keys(lifts).length} ejercicios).`;
+      renderHistory();
+    }else{
+      msg.style.color='var(--rust)';
+      msg.textContent = 'No se pudo guardar aquí (el chat bloquea el almacenamiento). Funcionará al subirlo a GitHub Pages.';
+    }
+  });
+
+  clearBtn.addEventListener('click', ()=>{
+    if(confirm('¿Borrar TODO el historial guardado? No se puede deshacer.')){
+      try{ localStorage.removeItem(STORE_KEY); }catch(_){}
+      renderHistory();
+      const msg = document.getElementById('logMsg');
+      msg.style.color='var(--rust)'; msg.textContent='Historial borrado.';
+    }
+  });
+}
+
+buildInputs();
+wireLog();
+renderHistory();
+
+/* Render inicial de días + navegación */
+Object.keys(DAYS).forEach(render);
+const tabs = document.querySelectorAll('.tab');
+const views = document.querySelectorAll('.view');
+tabs.forEach(t=>t.addEventListener('click',()=>{
+  tabs.forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  const v = t.dataset.view;
+  views.forEach(sec=> sec.id===v ? sec.classList.remove('hidden') : sec.classList.add('hidden'));
+  window.scrollTo({top:0,behavior:'smooth'});
+}));
+</script>
+</body>
+</html>
