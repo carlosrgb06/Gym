@@ -569,32 +569,32 @@ F.deadlift = svg(`
    yt:   ID del video de YouTube (canal de entrenador/fisio) con la técnica  */
 const DAYS = {
   d1:[
-    {fig:'bench', name:'Press de banca con barra', target:'Pecho · Tríceps', sets:'4', reps:'6–8', note:'Tu principal para fuerza de empuje. Baja controlado al pecho, empuja fuerte.', wger:'Bench Press Barbell', yt:'rT7DgCr-3pg'},
-    {fig:'row', name:'Remo con barra', target:'Espalda · Bíceps', sets:'4', reps:'8–10', note:'Torso ~45°, jala hacia el ombligo, aprieta la espalda.', wger:'Bent Over Barbell Row', yt:'9efgcAjQe7E'},
-    {fig:'ohp', name:'Press militar de pie', target:'Hombro', sets:'3', reps:'8–10', note:'Core apretado, no arquees la espalda baja.', wger:'Overhead Press Barbell', yt:'2yjwXTZQDDI'},
-    {fig:'pulldown', name:'Jalón al pecho', target:'Dorsales', sets:'3', reps:'10–12', note:'Codos hacia abajo y atrás, no jales con los brazos solo.', wger:'Lat Pulldown', yt:'CAwf7n6Luuc'},
-    {fig:'curl', name:'Curl de bíceps', target:'Bíceps', sets:'3', reps:'10–12', note:'Sin balanceo. Baja lento.', wger:'Biceps Curl Barbell', yt:'kwG2ipFRgfo'},
+    {fig:'bench', img:'bench', name:'Press de banca con barra', target:'Pecho · Tríceps', sets:'4', reps:'6–8', note:'Tu principal para fuerza de empuje. Baja controlado al pecho, empuja fuerte.', wger:'Bench Press Barbell', yt:'rT7DgCr-3pg'},
+    {fig:'row', img:'row', name:'Remo con barra', target:'Espalda · Bíceps', sets:'4', reps:'8–10', note:'Torso ~45°, jala hacia el ombligo, aprieta la espalda.', wger:'Bent Over Barbell Row', yt:'9efgcAjQe7E'},
+    {fig:'ohp', img:'ohp', name:'Press militar de pie', target:'Hombro', sets:'3', reps:'8–10', note:'Core apretado, no arquees la espalda baja.', wger:'Overhead Press Barbell', yt:'2yjwXTZQDDI'},
+    {fig:'pulldown', img:'pulldown', name:'Jalón al pecho', target:'Dorsales', sets:'3', reps:'10–12', note:'Codos hacia abajo y atrás, no jales con los brazos solo.', wger:'Lat Pulldown', yt:'CAwf7n6Luuc'},
+    {fig:'curl', img:'curl', name:'Curl de bíceps', target:'Bíceps', sets:'3', reps:'10–12', note:'Sin balanceo. Baja lento.', wger:'Biceps Curl Barbell', yt:'kwG2ipFRgfo'},
   ],
   d2:[
-    {fig:'squat', name:'Sentadilla con barra', target:'Cuádriceps · Glúteo', sets:'4', reps:'6–8', note:'El ejercicio rey. Baja hasta muslos paralelos, pecho arriba.', wger:'Squats Barbell', yt:'ultWZbUMPL8'},
-    {fig:'rdl', name:'Peso muerto rumano', target:'Femoral · Glúteo', sets:'3', reps:'8–10', note:'Cadera atrás, barra pegada a las piernas, espalda recta.', wger:'Romanian Deadlift', yt:'JCXUYuzwNrM'},
-    {fig:'legpress', name:'Prensa de piernas', target:'Cuádriceps', sets:'3', reps:'10–12', note:'Volumen extra para cuádriceps sin fatigar la espalda.', wger:'Leg Press', yt:'IZxyjW7MPJQ'},
-    {fig:'legcurl', name:'Curl femoral', target:'Femoral', sets:'3', reps:'12', note:'Aprieta arriba, baja lento.', wger:'Leg Curls', yt:'1Tq3QdYUuHs'},
-    {fig:'plank', name:'Plancha', target:'Core', sets:'3', reps:'30–45 s', note:'Cuerpo en línea recta, glúteo y abdomen apretados.', wger:'Plank', yt:'pSHjTRCQxIw'},
+    {fig:'squat', img:'squat', name:'Sentadilla con barra', target:'Cuádriceps · Glúteo', sets:'4', reps:'6–8', note:'El ejercicio rey. Baja hasta muslos paralelos, pecho arriba.', wger:'Squats Barbell', yt:'ultWZbUMPL8'},
+    {fig:'rdl', img:'rdl', name:'Peso muerto rumano', target:'Femoral · Glúteo', sets:'3', reps:'8–10', note:'Cadera atrás, barra pegada a las piernas, espalda recta.', wger:'Romanian Deadlift', yt:'JCXUYuzwNrM'},
+    {fig:'legpress', img:'legpress', name:'Prensa de piernas', target:'Cuádriceps', sets:'3', reps:'10–12', note:'Volumen extra para cuádriceps sin fatigar la espalda.', wger:'Leg Press', yt:'IZxyjW7MPJQ'},
+    {fig:'legcurl', img:'legcurl', name:'Curl femoral', target:'Femoral', sets:'3', reps:'12', note:'Aprieta arriba, baja lento.', wger:'Leg Curls', yt:'1Tq3QdYUuHs'},
+    {fig:'plank', img:'plank', name:'Plancha', target:'Core', sets:'3', reps:'30–45 s', note:'Cuerpo en línea recta, glúteo y abdomen apretados.', wger:'Plank', yt:'pSHjTRCQxIw'},
   ],
   d4:[
-    {fig:'incline', name:'Press inclinado con barra', target:'Pecho alto', sets:'4', reps:'8–10', note:'Banco a 30°. Trabaja la parte superior del pecho.', wger:'Incline Bench Press Barbell', yt:'SrqOu55lrYU'},
-    {fig:'pulldown', name:'Jalón agarre neutro', target:'Espalda', sets:'4', reps:'8–10', note:'Variación de agarre para más grosor de espalda.', wger:'Lat Pulldown', yt:'CAwf7n6Luuc'},
-    {fig:'lateral', name:'Elevaciones laterales', target:'Hombro lateral', sets:'4', reps:'12–15', note:'El ejercicio que da hombros anchos. Sube a la altura del hombro.', wger:'Lateral Raises', yt:'3VcKaXpzqRo'},
-    {fig:'row', name:'Remo en máquina/mancuerna', target:'Espalda media', sets:'3', reps:'10–12', note:'Enfócate en apretar los omóplatos.', wger:'Dumbbell Row', yt:'pYcpY20QaE8'},
-    {fig:'curl', name:'Curl martillo', target:'Bíceps · Antebrazo', sets:'3', reps:'10–12', note:'Agarre neutro (pulgares arriba).', wger:'Hammer Curl', yt:'zC3nLlEvin4'},
+    {fig:'incline', img:'incline', name:'Press inclinado con barra', target:'Pecho alto', sets:'4', reps:'8–10', note:'Banco a 30°. Trabaja la parte superior del pecho.', wger:'Incline Bench Press Barbell', yt:'SrqOu55lrYU'},
+    {fig:'pulldown', img:'pulldown', name:'Jalón agarre neutro', target:'Espalda', sets:'4', reps:'8–10', note:'Variación de agarre para más grosor de espalda.', wger:'Lat Pulldown', yt:'CAwf7n6Luuc'},
+    {fig:'lateral', img:'lateral', name:'Elevaciones laterales', target:'Hombro lateral', sets:'4', reps:'12–15', note:'El ejercicio que da hombros anchos. Sube a la altura del hombro.', wger:'Lateral Raises', yt:'3VcKaXpzqRo'},
+    {fig:'row', img:'dbrow', name:'Remo en máquina/mancuerna', target:'Espalda media', sets:'3', reps:'10–12', note:'Enfócate en apretar los omóplatos.', wger:'Dumbbell Row', yt:'pYcpY20QaE8'},
+    {fig:'curl', img:'hammer', name:'Curl martillo', target:'Bíceps · Antebrazo', sets:'3', reps:'10–12', note:'Agarre neutro (pulgares arriba).', wger:'Hammer Curl', yt:'zC3nLlEvin4'},
   ],
   d5:[
-    {fig:'deadlift', name:'Peso muerto convencional', target:'Cadena posterior', sets:'4', reps:'5', note:'Empieza LIGERO y aprende la técnica. Espalda neutra siempre.', wger:'Deadlift Barbell', yt:'op9kVnSso6Q'},
-    {fig:'lunge', name:'Zancadas con mancuernas', target:'Cuádriceps · Glúteo', sets:'3', reps:'10 c/pierna', note:'Paso largo, rodilla trasera casi al piso.', wger:'Dumbbell Lunges', yt:'D7KaRcUTQeE'},
-    {fig:'legext', name:'Extensión de cuádriceps', target:'Cuádriceps', sets:'3', reps:'12–15', note:'Aislamiento, aprieta arriba.', wger:'Leg Extensions', yt:'YyvSfVjQeL0'},
-    {fig:'calf', name:'Elevación de pantorrilla', target:'Pantorrilla', sets:'4', reps:'15', note:'Rango completo, pausa arriba.', wger:'Standing Calf Raises', yt:'JbyjNymZOt0'},
-    {fig:'plank', name:'Plancha lateral', target:'Core / oblicuos', sets:'3', reps:'30 s c/lado', note:'Cadera arriba, cuerpo recto.', wger:'Side Plank', yt:'K2VljzCC16g'},
+    {fig:'deadlift', img:'deadlift', name:'Peso muerto convencional', target:'Cadena posterior', sets:'4', reps:'5', note:'Empieza LIGERO y aprende la técnica. Espalda neutra siempre.', wger:'Deadlift Barbell', yt:'op9kVnSso6Q'},
+    {fig:'lunge', img:'lunge', name:'Zancadas con mancuernas', target:'Cuádriceps · Glúteo', sets:'3', reps:'10 c/pierna', note:'Paso largo, rodilla trasera casi al piso.', wger:'Dumbbell Lunges', yt:'D7KaRcUTQeE'},
+    {fig:'legext', img:'legext', name:'Extensión de cuádriceps', target:'Cuádriceps', sets:'3', reps:'12–15', note:'Aislamiento, aprieta arriba.', wger:'Leg Extensions', yt:'YyvSfVjQeL0'},
+    {fig:'calf', img:'calf', name:'Elevación de pantorrilla', target:'Pantorrilla', sets:'4', reps:'15', note:'Rango completo, pausa arriba.', wger:'Standing Calf Raises', yt:'JbyjNymZOt0'},
+    {fig:'plank', img:'sideplank', name:'Plancha lateral', target:'Core / oblicuos', sets:'3', reps:'30 s c/lado', note:'Cadera arriba, cuerpo recto.', wger:'Side Plank', yt:'K2VljzCC16g'},
   ],
 };
 
@@ -622,46 +622,51 @@ function render(dayId){
   arr.forEach((e,i)=> loadImg(e, document.getElementById('fig-'+dayId+'-'+i)));
 }
 
-/* ---------- IMAGEN REAL DESDE LA API DE WGER (con fallback a SVG) ----------
-   wger es open-source; sus imágenes son CC-BY-SA, por eso mostramos el autor.
-   OJO: dentro del chat de Claude las llamadas de red están bloqueadas, así que
-   aquí SIEMPRE verás el SVG. Al subir el archivo a GitHub Pages sí cargan.     */
-const WGER = 'https://wger.de/api/v2';
+/* ---------- IMÁGENES LOCALES DE EJERCICIO (con fallback a SVG) ----------
+   Las imágenes viven en la carpeta img/ de tu repo. Cada ejercicio tiene dos:
+   img/NOMBRE-1.jpg (posición inicial) y img/NOMBRE-2.jpg (posición final).
+   Las alternamos cada 1.2 s para simular el movimiento, como un GIF ligero.
+   Son de wger.de (licencia CC-BY-SA); el crédito está en el footer.
+   Si una imagen no carga, se usa la ilustración SVG de respaldo.            */
+const IMG_DIR = 'img/';
+const IMG_EXT = '.jpg';       // si descargaste PNG, cambia esto a '.png'
+const FLIP_MS = 1200;         // velocidad de la animación (ms)
 
-function fallbackSVG(fig, box, why){
-  box.innerHTML = (F[fig]||'') + `<div class="cred">${why||'ilustración propia'}</div>`;
+function fallbackSVG(fig, box){
+  box.innerHTML = (F[fig]||'') + '<div class="cred">ilustración propia</div>';
 }
 
-async function loadImg(ex, box){
+function loadImg(ex, box){
   if(!box) return;
-  try{
-    // 1) buscar el ejercicio (language=2 = inglés en wger)
-    const sr = await fetch(`${WGER}/exercise/search/?term=${encodeURIComponent(ex.wger)}&language=2&format=json`);
-    if(!sr.ok) throw new Error('search '+sr.status);
-    const sd = await sr.json();
-    const sug = (sd.suggestions && sd.suggestions[0] && sd.suggestions[0].data) || {};
-    const baseId = sug.base_id || sug.id;
-    if(!baseId) throw new Error('sin resultado');
-    // 2) traer imágenes de ese ejercicio (probamos los dos nombres de filtro)
-    let ir = await fetch(`${WGER}/exerciseimage/?exercise_base=${baseId}&format=json`);
-    let idata = ir.ok ? await ir.json() : {results:[]};
-    if(!idata.results || !idata.results.length){
-      ir = await fetch(`${WGER}/exerciseimage/?exercise=${baseId}&format=json`);
-      idata = ir.ok ? await ir.json() : {results:[]};
-    }
-    const main = (idata.results||[]).find(x=>x.is_main) || (idata.results||[])[0];
-    if(!main || !main.image) throw new Error('sin imagen');
-    const author = main.license_author ? ('© '+main.license_author+' · CC-BY-SA') : 'wger · CC-BY-SA';
-    const im = new Image();
-    im.onload = ()=>{ box.innerHTML=''; box.appendChild(im);
-      const c=document.createElement('div'); c.className='cred'; c.textContent=author; box.appendChild(c); };
-    im.onerror = ()=> fallbackSVG(ex.fig, box, 'ilustración propia');
-    im.src = (main.thumbnails && main.thumbnails.medium) ? main.thumbnails.medium : main.image;
-    im.alt = ex.name;
-  }catch(err){
-    // sin conexión, bloqueo de red, o wger sin imagen → dibujo propio
-    fallbackSVG(ex.fig, box, 'ilustración propia');
-  }
+  const base = ex.img;
+  if(!base){ fallbackSVG(ex.fig, box); return; }
+
+  const src1 = IMG_DIR + base + '-1' + IMG_EXT;
+  const src2 = IMG_DIR + base + '-2' + IMG_EXT;
+
+  const im = new Image();
+  im.alt = ex.name;
+  im.onload = ()=>{
+    // primera imagen cargó: la mostramos y preparamos la animación
+    box.innerHTML = '';
+    box.appendChild(im);
+    const cred = document.createElement('div');
+    cred.className = 'cred'; cred.textContent = 'wger · CC-BY-SA';
+    box.appendChild(cred);
+
+    // intentar la segunda imagen para animar
+    const im2 = new Image();
+    im2.onload = ()=>{
+      let showing = 1;
+      setInterval(()=>{
+        showing = showing===1 ? 2 : 1;
+        im.src = showing===1 ? src1 : src2;
+      }, FLIP_MS);
+    };
+    im2.src = src2;   // si falla, no pasa nada: queda la imagen fija
+  };
+  im.onerror = ()=> fallbackSVG(ex.fig, box);   // no existe img local → SVG
+  im.src = src1;
 }
 
 /* ---------- REGISTRO DE PESOS (localStorage) ----------
