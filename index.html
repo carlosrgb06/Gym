@@ -123,7 +123,7 @@
   .grid{display:grid;grid-template-columns:1fr;gap:16px}
   .ex{
     display:grid;
-    grid-template-columns:120px 1fr;
+    grid-template-columns:170px 1fr;
     border:1.5px solid var(--ink);
     background:var(--paper-2);
     overflow:hidden;
@@ -136,6 +136,12 @@
   }
   .ex-fig svg{width:100%;height:auto;display:block}
   .ex-fig img{width:100%;height:auto;display:block;mix-blend-mode:multiply}
+  /* dos imágenes lado a lado (posición inicial + final) */
+  .ex-pair{display:flex;gap:4px;width:100%;align-items:center}
+  .ex-pair img{width:50%;height:auto}
+  .ex-pair .arrow{
+    flex:0 0 auto;font-size:13px;color:var(--rust);font-weight:700;
+  }
   .ex-fig .cred{
     position:absolute;bottom:2px;left:4px;right:4px;
     font-family:"Courier New",monospace;font-size:7px;line-height:1.1;
@@ -166,7 +172,7 @@
   .ex-vid:hover{background:var(--rust);border-color:var(--rust)}
   .ex-vid svg{width:12px;height:12px}
   @media(max-width:520px){
-    .ex{grid-template-columns:104px 1fr}
+    .ex{grid-template-columns:130px 1fr}
     .ex-fig{padding:5px}
   }
 
@@ -625,12 +631,14 @@ function render(dayId){
 /* ---------- IMÁGENES LOCALES DE EJERCICIO (con fallback a SVG) ----------
    Las imágenes viven en la carpeta img/ de tu repo. Cada ejercicio tiene dos:
    img/NOMBRE-1.jpg (posición inicial) y img/NOMBRE-2.jpg (posición final).
-   Las alternamos cada 1.2 s para simular el movimiento, como un GIF ligero.
-   Son de wger.de (licencia CC-BY-SA); el crédito está en el footer.
-   Si una imagen no carga, se usa la ilustración SVG de respaldo.            */
+/* ---------- IMÁGENES LOCALES DE EJERCICIO (con fallback a SVG) ----------
+   Cada ejercicio busca dos fotos: NOMBRE-1.jpg (inicio) y NOMBRE-2.jpg (fin).
+   Si existen las dos, se muestran lado a lado con una flecha (inicio → fin).
+   Si solo existe la -1, se muestra sola y centrada.
+   Si no existe ninguna, se usa la ilustración SVG de respaldo.
+   Imágenes de wger.de (licencia CC-BY-SA); el crédito está en el footer.     */
 const IMG_DIR = '';           // imágenes en la misma carpeta que index.html
 const IMG_EXT = '.jpg';       // si descargaste PNG, cambia esto a '.png'
-const FLIP_MS = 1200;         // velocidad de la animación (ms)
 
 function fallbackSVG(fig, box){
   box.innerHTML = (F[fig]||'') + '<div class="cred">ilustración propia</div>';
@@ -644,29 +652,43 @@ function loadImg(ex, box){
   const src1 = IMG_DIR + base + '-1' + IMG_EXT;
   const src2 = IMG_DIR + base + '-2' + IMG_EXT;
 
-  const im = new Image();
-  im.alt = ex.name;
-  im.onload = ()=>{
-    // primera imagen cargó: la mostramos y preparamos la animación
-    box.innerHTML = '';
-    box.appendChild(im);
-    const cred = document.createElement('div');
-    cred.className = 'cred'; cred.textContent = 'wger · CC-BY-SA';
-    box.appendChild(cred);
-
-    // intentar la segunda imagen para animar
+  // probamos primero la imagen -1 (siempre debe existir si hay foto)
+  const im1 = new Image();
+  im1.alt = ex.name;
+  im1.onerror = ()=> fallbackSVG(ex.fig, box);   // no hay foto → dibujo SVG
+  im1.onload = ()=>{
+    // la -1 cargó. Ahora probamos si existe la -2 para ponerlas lado a lado.
     const im2 = new Image();
+    im2.alt = ex.name + ' (posición final)';
     im2.onload = ()=>{
-      let showing = 1;
-      setInterval(()=>{
-        showing = showing===1 ? 2 : 1;
-        im.src = showing===1 ? src1 : src2;
-      }, FLIP_MS);
+      // hay dos: las mostramos lado a lado con flecha
+      box.innerHTML = '';
+      const pair = document.createElement('div');
+      pair.className = 'ex-pair';
+      const arrow = document.createElement('span');
+      arrow.className = 'arrow'; arrow.textContent = '→';
+      pair.appendChild(im1);
+      pair.appendChild(arrow);
+      pair.appendChild(im2);
+      box.appendChild(pair);
+      addCred(box);
     };
-    im2.src = src2;   // si falla, no pasa nada: queda la imagen fija
+    im2.onerror = ()=>{
+      // solo hay una: la mostramos sola y centrada
+      box.innerHTML = '';
+      im1.style.width = '100%';
+      box.appendChild(im1);
+      addCred(box);
+    };
+    im2.src = src2;
   };
-  im.onerror = ()=> fallbackSVG(ex.fig, box);   // no existe img local → SVG
-  im.src = src1;
+  im1.src = src1;
+}
+
+function addCred(box){
+  const cred = document.createElement('div');
+  cred.className = 'cred'; cred.textContent = 'wger · CC-BY-SA';
+  box.appendChild(cred);
 }
 
 /* ---------- REGISTRO DE PESOS (localStorage) ----------
