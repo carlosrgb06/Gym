@@ -123,7 +123,7 @@
   .grid{display:grid;grid-template-columns:1fr;gap:16px}
   .ex{
     display:grid;
-    grid-template-columns:190px 1fr;
+    grid-template-columns:240px 1fr;
     border:1.5px solid var(--ink);
     background:var(--paper-2);
     overflow:hidden;
@@ -132,15 +132,15 @@
     background:var(--paper);
     border-right:1.5px solid var(--ink);
     display:flex;align-items:center;justify-content:center;
-    padding:8px;position:relative;
+    padding:6px;position:relative;
   }
   .ex-fig svg{width:100%;height:auto;display:block}
   .ex-fig img{width:100%;height:auto;display:block;mix-blend-mode:multiply}
   /* dos imágenes lado a lado (posición inicial + final) */
-  .ex-pair{display:flex;gap:4px;width:100%;align-items:center}
+  .ex-pair{display:flex;gap:2px;width:100%;align-items:center}
   .ex-pair img{width:50%;height:auto}
   .ex-pair .arrow{
-    flex:0 0 auto;font-size:13px;color:var(--rust);font-weight:700;
+    flex:0 0 auto;font-size:11px;color:var(--rust);font-weight:700;margin:0 1px;
   }
   .ex-fig .cred{
     position:absolute;bottom:2px;left:4px;right:4px;
@@ -172,8 +172,8 @@
   .ex-vid:hover{background:var(--rust);border-color:var(--rust)}
   .ex-vid svg{width:12px;height:12px}
   @media(max-width:520px){
-    .ex{grid-template-columns:145px 1fr}
-    .ex-fig{padding:5px}
+    .ex{grid-template-columns:160px 1fr}
+    .ex-fig{padding:4px}
   }
 
   /* SUPP + DIET */
