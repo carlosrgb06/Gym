@@ -123,7 +123,7 @@
   .grid{display:grid;grid-template-columns:1fr;gap:16px}
   .ex{
     display:grid;
-    grid-template-columns:170px 1fr;
+    grid-template-columns:190px 1fr;
     border:1.5px solid var(--ink);
     background:var(--paper-2);
     overflow:hidden;
@@ -172,7 +172,7 @@
   .ex-vid:hover{background:var(--rust);border-color:var(--rust)}
   .ex-vid svg{width:12px;height:12px}
   @media(max-width:520px){
-    .ex{grid-template-columns:130px 1fr}
+    .ex{grid-template-columns:145px 1fr}
     .ex-fig{padding:5px}
   }
 
@@ -576,31 +576,31 @@ F.deadlift = svg(`
 const DAYS = {
   d1:[
     {fig:'bench', img:'bench', name:'Press de banca con barra', target:'Pecho · Tríceps', sets:'4', reps:'6–8', note:'Tu principal para fuerza de empuje. Baja controlado al pecho, empuja fuerte.', wger:'Bench Press Barbell', yt:'rT7DgCr-3pg'},
-    {fig:'row', img:'row', name:'Remo con barra', target:'Espalda · Bíceps', sets:'4', reps:'8–10', note:'Torso ~45°, jala hacia el ombligo, aprieta la espalda.', wger:'Bent Over Barbell Row', yt:'9efgcAjQe7E'},
-    {fig:'ohp', img:'ohp', name:'Press militar de pie', target:'Hombro', sets:'3', reps:'8–10', note:'Core apretado, no arquees la espalda baja.', wger:'Overhead Press Barbell', yt:'2yjwXTZQDDI'},
-    {fig:'pulldown', img:'pulldown', name:'Jalón al pecho', target:'Dorsales', sets:'3', reps:'10–12', note:'Codos hacia abajo y atrás, no jales con los brazos solo.', wger:'Lat Pulldown', yt:'CAwf7n6Luuc'},
-    {fig:'curl', img:'curl', name:'Curl de bíceps', target:'Bíceps', sets:'3', reps:'10–12', note:'Sin balanceo. Baja lento.', wger:'Biceps Curl Barbell', yt:'kwG2ipFRgfo'},
+    {fig:'row', img:'row', name:'Remo con barra (Barbell Row)', target:'Espalda · Bíceps', sets:'4', reps:'8–10', note:'Torso ~45°, jala hacia el ombligo, aprieta la espalda.', wger:'Bent Over Barbell Row', yt:'9efgcAjQe7E'},
+    {fig:'ohp', img:'ohp', name:'Press militar de pie (Overhead Press)', target:'Hombro', sets:'3', reps:'8–10', note:'Core apretado, no arquees la espalda baja.', wger:'Overhead Press Barbell', yt:'2yjwXTZQDDI'},
+    {fig:'pulldown', img:'pulldown', name:'Jalón al pecho (Lat Pulldown)', target:'Dorsales', sets:'3', reps:'10–12', note:'Codos hacia abajo y atrás, no jales con los brazos solo.', wger:'Lat Pulldown', yt:'CAwf7n6Luuc'},
+    {fig:'curl', img:'curl', name:'Curl de bíceps con barra', target:'Bíceps', sets:'3', reps:'10–12', note:'Sin balanceo. Baja lento.', wger:'Biceps Curl Barbell', yt:'kwG2ipFRgfo'},
   ],
   d2:[
-    {fig:'squat', img:'squat', name:'Sentadilla con barra', target:'Cuádriceps · Glúteo', sets:'4', reps:'6–8', note:'El ejercicio rey. Baja hasta muslos paralelos, pecho arriba.', wger:'Squats Barbell', yt:'ultWZbUMPL8'},
-    {fig:'rdl', img:'rdl', name:'Peso muerto rumano', target:'Femoral · Glúteo', sets:'3', reps:'8–10', note:'Cadera atrás, barra pegada a las piernas, espalda recta.', wger:'Romanian Deadlift', yt:'JCXUYuzwNrM'},
-    {fig:'legpress', img:'legpress', name:'Prensa de piernas', target:'Cuádriceps', sets:'3', reps:'10–12', note:'Volumen extra para cuádriceps sin fatigar la espalda.', wger:'Leg Press', yt:'IZxyjW7MPJQ'},
-    {fig:'legcurl', img:'legcurl', name:'Curl femoral', target:'Femoral', sets:'3', reps:'12', note:'Aprieta arriba, baja lento.', wger:'Leg Curls', yt:'1Tq3QdYUuHs'},
-    {fig:'plank', img:'plank', name:'Plancha', target:'Core', sets:'3', reps:'30–45 s', note:'Cuerpo en línea recta, glúteo y abdomen apretados.', wger:'Plank', yt:'pSHjTRCQxIw'},
+    {fig:'squat', img:'squat', name:'Sentadilla con barra (Back Squat)', target:'Cuádriceps · Glúteo', sets:'4', reps:'6–8', note:'El ejercicio rey. Baja hasta muslos paralelos, pecho arriba.', wger:'Squats Barbell', yt:'ultWZbUMPL8'},
+    {fig:'rdl', img:'rdl', name:'Peso muerto rumano (RDL)', target:'Femoral · Glúteo', sets:'3', reps:'8–10', note:'Cadera atrás, barra pegada a las piernas, espalda recta.', wger:'Romanian Deadlift', yt:'JCXUYuzwNrM'},
+    {fig:'legpress', img:'legpress', name:'Prensa de piernas (Leg Press)', target:'Cuádriceps', sets:'3', reps:'10–12', note:'Volumen extra para cuádriceps sin fatigar la espalda.', wger:'Leg Press', yt:'IZxyjW7MPJQ'},
+    {fig:'legcurl', img:'legcurl', name:'Curl femoral tumbado (Leg Curl)', target:'Femoral', sets:'3', reps:'12', note:'Aprieta arriba, baja lento.', wger:'Leg Curls', yt:'1Tq3QdYUuHs'},
+    {fig:'plank', img:'plank', name:'Plancha abdominal (Plank)', target:'Core', sets:'3', reps:'30–45 s', note:'Cuerpo en línea recta, glúteo y abdomen apretados.', wger:'Plank', yt:'pSHjTRCQxIw'},
   ],
   d4:[
     {fig:'incline', img:'incline', name:'Press inclinado con barra', target:'Pecho alto', sets:'4', reps:'8–10', note:'Banco a 30°. Trabaja la parte superior del pecho.', wger:'Incline Bench Press Barbell', yt:'SrqOu55lrYU'},
-    {fig:'pulldown', img:'pulldown', name:'Jalón agarre neutro', target:'Espalda', sets:'4', reps:'8–10', note:'Variación de agarre para más grosor de espalda.', wger:'Lat Pulldown', yt:'CAwf7n6Luuc'},
-    {fig:'lateral', img:'lateral', name:'Elevaciones laterales', target:'Hombro lateral', sets:'4', reps:'12–15', note:'El ejercicio que da hombros anchos. Sube a la altura del hombro.', wger:'Lateral Raises', yt:'3VcKaXpzqRo'},
-    {fig:'row', img:'dbrow', name:'Remo en máquina/mancuerna', target:'Espalda media', sets:'3', reps:'10–12', note:'Enfócate en apretar los omóplatos.', wger:'Dumbbell Row', yt:'pYcpY20QaE8'},
-    {fig:'curl', img:'hammer', name:'Curl martillo', target:'Bíceps · Antebrazo', sets:'3', reps:'10–12', note:'Agarre neutro (pulgares arriba).', wger:'Hammer Curl', yt:'zC3nLlEvin4'},
+    {fig:'pulldown', img:'pulldown', name:'Jalón al pecho agarre neutro', target:'Espalda', sets:'4', reps:'8–10', note:'Variación de agarre para más grosor de espalda.', wger:'Lat Pulldown', yt:'CAwf7n6Luuc'},
+    {fig:'lateral', img:'lateral', name:'Elevaciones laterales con mancuernas', target:'Hombro lateral', sets:'4', reps:'12–15', note:'El ejercicio que da hombros anchos. Sube a la altura del hombro.', wger:'Lateral Raises', yt:'3VcKaXpzqRo'},
+    {fig:'row', img:'dbrow', name:'Remo con mancuerna a una mano', target:'Espalda media', sets:'3', reps:'10–12', note:'Enfócate en apretar los omóplatos.', wger:'Dumbbell Row', yt:'pYcpY20QaE8'},
+    {fig:'curl', img:'hammer', name:'Curl martillo con mancuernas', target:'Bíceps · Antebrazo', sets:'3', reps:'10–12', note:'Agarre neutro (pulgares arriba).', wger:'Hammer Curl', yt:'zC3nLlEvin4'},
   ],
   d5:[
-    {fig:'deadlift', img:'deadlift', name:'Peso muerto convencional', target:'Cadena posterior', sets:'4', reps:'5', note:'Empieza LIGERO y aprende la técnica. Espalda neutra siempre.', wger:'Deadlift Barbell', yt:'op9kVnSso6Q'},
-    {fig:'lunge', img:'lunge', name:'Zancadas con mancuernas', target:'Cuádriceps · Glúteo', sets:'3', reps:'10 c/pierna', note:'Paso largo, rodilla trasera casi al piso.', wger:'Dumbbell Lunges', yt:'D7KaRcUTQeE'},
-    {fig:'legext', img:'legext', name:'Extensión de cuádriceps', target:'Cuádriceps', sets:'3', reps:'12–15', note:'Aislamiento, aprieta arriba.', wger:'Leg Extensions', yt:'YyvSfVjQeL0'},
-    {fig:'calf', img:'calf', name:'Elevación de pantorrilla', target:'Pantorrilla', sets:'4', reps:'15', note:'Rango completo, pausa arriba.', wger:'Standing Calf Raises', yt:'JbyjNymZOt0'},
-    {fig:'plank', img:'sideplank', name:'Plancha lateral', target:'Core / oblicuos', sets:'3', reps:'30 s c/lado', note:'Cadera arriba, cuerpo recto.', wger:'Side Plank', yt:'K2VljzCC16g'},
+    {fig:'deadlift', img:'deadlift', name:'Peso muerto convencional (Deadlift)', target:'Cadena posterior', sets:'4', reps:'5', note:'Empieza LIGERO y aprende la técnica. Espalda neutra siempre.', wger:'Deadlift Barbell', yt:'op9kVnSso6Q'},
+    {fig:'lunge', img:'lunge', name:'Zancadas con mancuernas (Lunges)', target:'Cuádriceps · Glúteo', sets:'3', reps:'10 c/pierna', note:'Paso largo, rodilla trasera casi al piso.', wger:'Dumbbell Lunges', yt:'D7KaRcUTQeE'},
+    {fig:'legext', img:'legext', name:'Extensión de cuádriceps (Leg Extension)', target:'Cuádriceps', sets:'3', reps:'12–15', note:'Aislamiento, aprieta arriba.', wger:'Leg Extensions', yt:'YyvSfVjQeL0'},
+    {fig:'calf', img:'calf', name:'Elevación de pantorrilla de pie', target:'Pantorrilla', sets:'4', reps:'15', note:'Rango completo, pausa arriba.', wger:'Standing Calf Raises', yt:'JbyjNymZOt0'},
+    {fig:'plank', img:'sideplank', name:'Plancha lateral (Side Plank)', target:'Core / oblicuos', sets:'3', reps:'30 s c/lado', note:'Cadera arriba, cuerpo recto.', wger:'Side Plank', yt:'K2VljzCC16g'},
   ],
 };
 
