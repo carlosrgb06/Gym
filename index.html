@@ -118,6 +118,9 @@
   }
   .b-upper{background:var(--steel)}
   .b-lower{background:var(--moss)}
+  .b-push{background:var(--steel)}
+  .b-pull{background:var(--gold)}
+  .b-legs{background:var(--moss)}
 
   /* EXERCISE CARD */
   .grid{display:grid;grid-template-columns:1fr;gap:16px}
@@ -236,7 +239,7 @@
 
 <header class="hero">
   <div class="wrap">
-    <div class="eyebrow">Plan personal · 4 días/semana · Hipertrofia + Fuerza</div>
+    <div class="eyebrow">Plan personal · 6 días/semana · Push / Pull / Legs</div>
     <h1>Ganar <em>músculo</em>,<br>no solo peso.</h1>
     <div class="sub">Objetivo del semestre: constancia · +5 kg · más fuerza</div>
     <div class="statline">
@@ -250,49 +253,69 @@
 
 <nav class="days">
   <div class="wrap">
-    <button class="tab active" data-view="d1">Lun · Upper A</button>
-    <button class="tab" data-view="d2">Mar · Lower A</button>
-    <button class="tab" data-view="d4">Jue · Upper B</button>
-    <button class="tab" data-view="d5">Vie · Lower B</button>
+    <button class="tab active" data-view="d1">Lun · Push A</button>
+    <button class="tab" data-view="d2">Mar · Pull A</button>
+    <button class="tab" data-view="d3">Mié · Legs A</button>
+    <button class="tab" data-view="d4">Jue · Push B</button>
+    <button class="tab" data-view="d5">Vie · Pull B</button>
+    <button class="tab" data-view="d6">Sáb · Legs B</button>
     <button class="tab" data-view="diet">Dieta</button>
     <button class="tab" data-view="supp">Suplementos</button>
     <button class="tab" data-view="log">Progreso</button>
   </div>
 </nav>
 
-<!-- ============ DÍA 1 UPPER A ============ -->
+<!-- ============ DÍA 1 PUSH A ============ -->
 <section class="view" id="d1">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">DÍA 01</span><h2>Upper A<span class="split-badge b-upper">Empuje + Jalón</span></h2></div>
-    <div class="sec-tag">Pecho · Espalda · Hombro · Brazos — descansa 2 min entre series pesadas</div>
+    <div class="sec-head"><span class="sec-num">DÍA 01</span><h2>Push A<span class="split-badge b-push">Pecho dominante</span></h2></div>
+    <div class="sec-tag">Pecho · Hombro · Tríceps — descansa 2 min entre series pesadas</div>
     <div class="grid" id="grid-d1"></div>
   </div>
 </section>
 
-<!-- ============ DÍA 2 LOWER A ============ -->
+<!-- ============ DÍA 2 PULL A ============ -->
 <section class="view hidden" id="d2">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">DÍA 02</span><h2>Lower A<span class="split-badge b-lower">Sentadilla dominante</span></h2></div>
-    <div class="sec-tag">Cuádriceps · Glúteo · Femoral · Core</div>
+    <div class="sec-head"><span class="sec-num">DÍA 02</span><h2>Pull A<span class="split-badge b-pull">Espalda dominante</span></h2></div>
+    <div class="sec-tag">Espalda · Bíceps · Antebrazo</div>
     <div class="grid" id="grid-d2"></div>
   </div>
 </section>
 
-<!-- ============ DÍA 4 UPPER B ============ -->
+<!-- ============ DÍA 3 LEGS A ============ -->
+<section class="view hidden" id="d3">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">DÍA 03</span><h2>Legs A<span class="split-badge b-legs">Sentadilla dominante</span></h2></div>
+    <div class="sec-tag">Cuádriceps · Glúteo · Femoral · Core</div>
+    <div class="grid" id="grid-d3"></div>
+  </div>
+</section>
+
+<!-- ============ DÍA 4 PUSH B ============ -->
 <section class="view hidden" id="d4">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">DÍA 03</span><h2>Upper B<span class="split-badge b-upper">Inclinado + Hombro</span></h2></div>
-    <div class="sec-tag">Más volumen de hombro y espalda alta que el día A</div>
+    <div class="sec-head"><span class="sec-num">DÍA 04</span><h2>Push B<span class="split-badge b-push">Hombro dominante</span></h2></div>
+    <div class="sec-tag">Más volumen de hombro que el día A</div>
     <div class="grid" id="grid-d4"></div>
   </div>
 </section>
 
-<!-- ============ DÍA 5 LOWER B ============ -->
+<!-- ============ DÍA 5 PULL B ============ -->
 <section class="view hidden" id="d5">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">DÍA 04</span><h2>Lower B<span class="split-badge b-lower">Peso muerto dominante</span></h2></div>
-    <div class="sec-tag">Cadena posterior · zancadas · pantorrilla</div>
+    <div class="sec-head"><span class="sec-num">DÍA 05</span><h2>Pull B<span class="split-badge b-pull">Espalda ancho + grosor</span></h2></div>
+    <div class="sec-tag">Ángulos distintos de jalón y remo</div>
     <div class="grid" id="grid-d5"></div>
+  </div>
+</section>
+
+<!-- ============ DÍA 6 LEGS B ============ -->
+<section class="view hidden" id="d6">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">DÍA 06</span><h2>Legs B<span class="split-badge b-legs">Peso muerto dominante</span></h2></div>
+    <div class="sec-tag">Cadena posterior · zancadas · pantorrilla</div>
+    <div class="grid" id="grid-d6"></div>
   </div>
 </section>
 
@@ -317,6 +340,11 @@
         <span><span class="dot m-c"></span>Carbohidratos · 1,360 kcal</span>
         <span><span class="dot m-f"></span>Grasa · 700 kcal</span>
       </div>
+    </div>
+
+    <div class="callout">
+      <div class="lead">Con 6 días de entreno, la comida importa más todavía</div>
+      <p class="tip">Al pasar de 4 a 6 días entrenando subes el volumen total de trabajo. Eso significa más fatiga y más necesidad de recuperación — <strong>no de más entreno</strong>. Si notas que te estancas o te sientes agotado, revisa primero sueño y comida antes de agregar más series.</p>
     </div>
 
     <div class="callout">
@@ -401,10 +429,10 @@
   </div>
 </section>
 
-
+<footer>
   <div class="wrap">
     PROGRESIÓN: cuando completes todas las series con buena técnica, sube peso la próxima semana.<br>
-    Pésate 1×/semana, misma hora. · Descansa Mié / Sáb / Dom.<br>
+    Pésate 1×/semana, misma hora. · Descansa Domingo.<br>
     Imágenes de ejercicios: <a href="https://wger.de" target="_blank" rel="noopener">wger.de</a> · CC-BY-SA · Videos: YouTube<br>
     Hecho para ti · edítalo libremente
   </div>
@@ -569,36 +597,95 @@ F.deadlift = svg(`
   <rect x="30" y="56" width="7" height="20" fill="${ACC}"/>
   <rect x="72" y="56" width="7" height="20" fill="${ACC}"/>
 `);
+/* Dips */
+F.dips = svg(`
+  <line x1="24" y1="60" x2="24" y2="86" stroke="${BAR}" stroke-width="4"/>
+  <line x1="76" y1="60" x2="76" y2="86" stroke="${BAR}" stroke-width="4"/>
+  <circle cx="50" cy="38" r="6" ${s(4)}/>
+  <path d="M50 44 L50 62" ${s(4)}/>
+  <path d="M50 48 L28 60 M50 48 L72 60" ${s(4)}/>
+  <path d="M50 62 L42 80 M50 62 L58 80" ${s(4)}/>
+`);
+/* Skull crusher / tricep extension */
+F.skull = svg(`
+  <rect x="24" y="60" width="52" height="6" fill="${BAR}"/>
+  <circle cx="44" cy="52" r="6" ${s(4)}/>
+  <path d="M44 58 L44 66" ${s(4)}/>
+  <path d="M44 62 L60 40 M44 62 L28 62" ${s(4)}/>
+  <line x1="50" y1="34" x2="70" y2="34" stroke="${BAR}" stroke-width="4"/>
+  <rect x="47" y="27" width="6" height="14" fill="${ACC}"/>
+  <rect x="67" y="27" width="6" height="14" fill="${ACC}"/>
+`);
+/* Face pull */
+F.facepull = svg(`
+  <circle cx="50" cy="34" r="6" ${s(4)}/>
+  <path d="M50 40 L50 68" ${s(4)}/>
+  <path d="M50 46 L36 40 M50 46 L64 40" ${s(4)}/>
+  <path d="M36 40 L26 44 M64 40 L74 44" ${s(4)}/>
+  <path d="M50 68 L42 86 M50 68 L58 86" ${s(4)}/>
+`);
+/* Shrug */
+F.shrug = svg(`
+  <circle cx="50" cy="28" r="6" ${s(4)}/>
+  <path d="M50 34 L50 64" ${s(4)}/>
+  <path d="M50 40 L34 44 M50 40 L66 44" ${s(4)}/>
+  <rect x="27" y="44" width="7" height="10" fill="${ACC}"/>
+  <rect x="66" y="44" width="7" height="10" fill="${ACC}"/>
+  <path d="M50 64 L42 84 M50 64 L58 84" ${s(4)}/>
+`);
+/* Chest fly */
+F.fly = svg(`
+  <rect x="20" y="62" width="52" height="6" fill="${BAR}"/>
+  <circle cx="44" cy="55" r="6" ${s(4)}/>
+  <path d="M44 61 L44 62" ${s(4)}/>
+  <path d="M30 62 L46 44 M58 62 L42 44" ${s(4)}/>
+  <rect x="27" y="38" width="8" height="9" rx="2" fill="${ACC}"/>
+  <rect x="55" y="38" width="8" height="9" rx="2" fill="${ACC}"/>
+`);
 
 /* ---------- DATOS DE RUTINA ----------
    wger: término que se busca en la API de wger para traer la imagen real
    yt:   ID del video de YouTube (canal de entrenador/fisio) con la técnica  */
 const DAYS = {
-  d1:[
+  d1:[ // PUSH A — pecho dominante
     {fig:'bench', img:'bench', name:'Press de banca con barra', target:'Pecho · Tríceps', sets:'4', reps:'6–8', note:'Tu principal para fuerza de empuje. Baja controlado al pecho, empuja fuerte.', wger:'Bench Press Barbell', yt:'rT7DgCr-3pg'},
-    {fig:'row', img:'row', name:'Remo con barra (Barbell Row)', target:'Espalda · Bíceps', sets:'4', reps:'8–10', note:'Torso ~45°, jala hacia el ombligo, aprieta la espalda.', wger:'Bent Over Barbell Row', yt:'9efgcAjQe7E'},
+    {fig:'incline', img:'incline', name:'Press inclinado con mancuernas', target:'Pecho alto', sets:'3', reps:'8–10', note:'Banco a 30°. Rango de movimiento completo, no rebotes.', wger:'Incline Dumbbell Press', yt:'8iPEnn-ltC8'},
     {fig:'ohp', img:'ohp', name:'Press militar de pie (Overhead Press)', target:'Hombro', sets:'3', reps:'8–10', note:'Core apretado, no arquees la espalda baja.', wger:'Overhead Press Barbell', yt:'2yjwXTZQDDI'},
-    {fig:'pulldown', img:'pulldown', name:'Jalón al pecho (Lat Pulldown)', target:'Dorsales', sets:'3', reps:'10–12', note:'Codos hacia abajo y atrás, no jales con los brazos solo.', wger:'Lat Pulldown', yt:'CAwf7n6Luuc'},
-    {fig:'curl', img:'curl', name:'Curl de bíceps con barra', target:'Bíceps', sets:'3', reps:'10–12', note:'Sin balanceo. Baja lento.', wger:'Biceps Curl Barbell', yt:'kwG2ipFRgfo'},
+    {fig:'fly', img:'fly', name:'Aperturas con mancuernas (Chest Fly)', target:'Pecho', sets:'3', reps:'12–15', note:'Codos con ligera flexión fija, controla la bajada.', wger:'Dumbbell Flyes', yt:'eozdVDA78K0'},
+    {fig:'dips', img:'dips', name:'Fondos en paralelas (Dips)', target:'Tríceps · Pecho bajo', sets:'3', reps:'8–12', note:'Inclina el torso adelante para más pecho, recto para más tríceps.', wger:'Dips', yt:'2z8JmcrW-As'},
   ],
-  d2:[
+  d2:[ // PULL A — espalda dominante
+    {fig:'row', img:'row', name:'Remo con barra (Barbell Row)', target:'Espalda · Bíceps', sets:'4', reps:'8–10', note:'Torso ~45°, jala hacia el ombligo, aprieta la espalda.', wger:'Bent Over Barbell Row', yt:'9efgcAjQe7E'},
+    {fig:'pulldown', img:'pulldown', name:'Jalón al pecho (Lat Pulldown)', target:'Dorsales', sets:'4', reps:'10–12', note:'Codos hacia abajo y atrás, no jales con los brazos solo.', wger:'Lat Pulldown', yt:'CAwf7n6Luuc'},
+    {fig:'facepull', img:'facepull', name:'Face pull con cuerda', target:'Espalda alta · Hombro post.', sets:'3', reps:'12–15', note:'Jala hacia la cara, codos altos. Ayuda a la postura.', wger:'Face Pull', yt:'rep-qVOkqgk'},
+    {fig:'curl', img:'curl', name:'Curl de bíceps con barra', target:'Bíceps', sets:'3', reps:'10–12', note:'Sin balanceo. Baja lento.', wger:'Biceps Curl Barbell', yt:'kwG2ipFRgfo'},
+    {fig:'shrug', img:'shrug', name:'Encogimientos con mancuernas (Shrugs)', target:'Trapecio', sets:'3', reps:'12–15', note:'Sube los hombros directo hacia arriba, pausa 1 seg arriba.', wger:'Shrugs', yt:'g6qbq4Lf1FI'},
+  ],
+  d3:[ // LEGS A — sentadilla dominante
     {fig:'squat', img:'squat', name:'Sentadilla con barra (Back Squat)', target:'Cuádriceps · Glúteo', sets:'4', reps:'6–8', note:'El ejercicio rey. Baja hasta muslos paralelos, pecho arriba.', wger:'Squats Barbell', yt:'ultWZbUMPL8'},
-    {fig:'rdl', img:'rdl', name:'Peso muerto rumano (RDL)', target:'Femoral · Glúteo', sets:'3', reps:'8–10', note:'Cadera atrás, barra pegada a las piernas, espalda recta.', wger:'Romanian Deadlift', yt:'JCXUYuzwNrM'},
     {fig:'legpress', img:'legpress', name:'Prensa de piernas (Leg Press)', target:'Cuádriceps', sets:'3', reps:'10–12', note:'Volumen extra para cuádriceps sin fatigar la espalda.', wger:'Leg Press', yt:'IZxyjW7MPJQ'},
     {fig:'legcurl', img:'legcurl', name:'Curl femoral tumbado (Leg Curl)', target:'Femoral', sets:'3', reps:'12', note:'Aprieta arriba, baja lento.', wger:'Leg Curls', yt:'1Tq3QdYUuHs'},
+    {fig:'legext', img:'legext', name:'Extensión de cuádriceps (Leg Extension)', target:'Cuádriceps', sets:'3', reps:'12–15', note:'Aislamiento, aprieta arriba.', wger:'Leg Extensions', yt:'YyvSfVjQeL0'},
     {fig:'plank', img:'plank', name:'Plancha abdominal (Plank)', target:'Core', sets:'3', reps:'30–45 s', note:'Cuerpo en línea recta, glúteo y abdomen apretados.', wger:'Plank', yt:'pSHjTRCQxIw'},
   ],
-  d4:[
-    {fig:'incline', img:'incline', name:'Press inclinado con barra', target:'Pecho alto', sets:'4', reps:'8–10', note:'Banco a 30°. Trabaja la parte superior del pecho.', wger:'Incline Bench Press Barbell', yt:'SrqOu55lrYU'},
-    {fig:'pulldown', img:'pulldown', name:'Jalón al pecho agarre neutro', target:'Espalda', sets:'4', reps:'8–10', note:'Variación de agarre para más grosor de espalda.', wger:'Lat Pulldown', yt:'CAwf7n6Luuc'},
+  d4:[ // PUSH B — hombro dominante
+    {fig:'ohp', img:'ohp2', name:'Press de hombro con mancuernas', target:'Hombro', sets:'4', reps:'8–10', note:'Mayor rango de movimiento que con barra.', wger:'Dumbbell Shoulder Press', yt:'qEwKCR5JCog'},
+    {fig:'incline', img:'incline', name:'Press inclinado con barra', target:'Pecho alto', sets:'3', reps:'8–10', note:'Banco a 30°. Trabaja la parte superior del pecho.', wger:'Incline Bench Press Barbell', yt:'SrqOu55lrYU'},
     {fig:'lateral', img:'lateral', name:'Elevaciones laterales con mancuernas', target:'Hombro lateral', sets:'4', reps:'12–15', note:'El ejercicio que da hombros anchos. Sube a la altura del hombro.', wger:'Lateral Raises', yt:'3VcKaXpzqRo'},
-    {fig:'row', img:'dbrow', name:'Remo con mancuerna a una mano', target:'Espalda media', sets:'3', reps:'10–12', note:'Enfócate en apretar los omóplatos.', wger:'Dumbbell Row', yt:'pYcpY20QaE8'},
-    {fig:'curl', img:'hammer', name:'Curl martillo con mancuernas', target:'Bíceps · Antebrazo', sets:'3', reps:'10–12', note:'Agarre neutro (pulgares arriba).', wger:'Hammer Curl', yt:'zC3nLlEvin4'},
+    {fig:'dips', img:'dips', name:'Fondos en banco (Bench Dips)', target:'Tríceps', sets:'3', reps:'10–12', note:'Pies elevados para más dificultad si ya dominas la técnica.', wger:'Bench Dips', yt:'0326dy_-CzM'},
+    {fig:'skull', img:'skull', name:'Press francés (Skull Crusher)', target:'Tríceps', sets:'3', reps:'10–12', note:'Solo mueve el antebrazo, codos fijos apuntando arriba.', wger:'Skullcrusher', yt:'d_KZxkY_0cM'},
   ],
-  d5:[
+  d5:[ // PULL B — espalda ancho + grosor
+    {fig:'pulldown', img:'pulldown2', name:'Jalón al pecho agarre neutro', target:'Espalda', sets:'4', reps:'8–10', note:'Variación de agarre para más grosor de espalda.', wger:'Lat Pulldown', yt:'CAwf7n6Luuc'},
+    {fig:'row', img:'dbrow', name:'Remo con mancuerna a una mano', target:'Espalda media', sets:'4', reps:'10–12', note:'Enfócate en apretar los omóplatos.', wger:'Dumbbell Row', yt:'pYcpY20QaE8'},
+    {fig:'facepull', img:'facepull', name:'Remo al cuello con cable', target:'Espalda alta', sets:'3', reps:'12–15', note:'Jala alto, hacia la barbilla, codos abiertos.', wger:'Upright Row', yt:'jaAV1KqSNBw'},
+    {fig:'curl', img:'hammer', name:'Curl martillo con mancuernas', target:'Bíceps · Antebrazo', sets:'3', reps:'10–12', note:'Agarre neutro (pulgares arriba).', wger:'Hammer Curl', yt:'zC3nLlEvin4'},
+    {fig:'curl', img:'curl2', name:'Curl inclinado con mancuernas', target:'Bíceps (cabeza larga)', sets:'3', reps:'10–12', note:'Banco a 45°, brazo detrás del torso para más estiramiento.', wger:'Incline Dumbbell Curl', yt:'soxrZlIl35U'},
+  ],
+  d6:[ // LEGS B — peso muerto dominante
     {fig:'deadlift', img:'deadlift', name:'Peso muerto convencional (Deadlift)', target:'Cadena posterior', sets:'4', reps:'5', note:'Empieza LIGERO y aprende la técnica. Espalda neutra siempre.', wger:'Deadlift Barbell', yt:'op9kVnSso6Q'},
+    {fig:'rdl', img:'rdl', name:'Peso muerto rumano (RDL)', target:'Femoral · Glúteo', sets:'3', reps:'8–10', note:'Cadera atrás, barra pegada a las piernas, espalda recta.', wger:'Romanian Deadlift', yt:'JCXUYuzwNrM'},
     {fig:'lunge', img:'lunge', name:'Zancadas con mancuernas (Lunges)', target:'Cuádriceps · Glúteo', sets:'3', reps:'10 c/pierna', note:'Paso largo, rodilla trasera casi al piso.', wger:'Dumbbell Lunges', yt:'D7KaRcUTQeE'},
-    {fig:'legext', img:'legext', name:'Extensión de cuádriceps (Leg Extension)', target:'Cuádriceps', sets:'3', reps:'12–15', note:'Aislamiento, aprieta arriba.', wger:'Leg Extensions', yt:'YyvSfVjQeL0'},
     {fig:'calf', img:'calf', name:'Elevación de pantorrilla de pie', target:'Pantorrilla', sets:'4', reps:'15', note:'Rango completo, pausa arriba.', wger:'Standing Calf Raises', yt:'JbyjNymZOt0'},
     {fig:'plank', img:'sideplank', name:'Plancha lateral (Side Plank)', target:'Core / oblicuos', sets:'3', reps:'30 s c/lado', note:'Cadera arriba, cuerpo recto.', wger:'Side Plank', yt:'K2VljzCC16g'},
   ],
@@ -609,7 +696,7 @@ const PLAY = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7
 function render(dayId){
   const arr = DAYS[dayId]; if(!arr) return;
   const grid = document.getElementById('grid-'+dayId);
-  if(grid.dataset.done) return;
+  if(!grid || grid.dataset.done) return;
   grid.innerHTML = arr.map((e,i)=>`
     <div class="ex">
       <div class="ex-fig" id="fig-${dayId}-${i}">
@@ -629,15 +716,12 @@ function render(dayId){
 }
 
 /* ---------- IMÁGENES LOCALES DE EJERCICIO (con fallback a SVG) ----------
-   Las imágenes viven en la carpeta img/ de tu repo. Cada ejercicio tiene dos:
-   img/NOMBRE-1.jpg (posición inicial) y img/NOMBRE-2.jpg (posición final).
-/* ---------- IMÁGENES LOCALES DE EJERCICIO (con fallback a SVG) ----------
    Cada ejercicio busca dos fotos: NOMBRE-1.jpg (inicio) y NOMBRE-2.jpg (fin).
    Si existen las dos, se muestran lado a lado con una flecha (inicio → fin).
    Si solo existe la -1, se muestra sola y centrada.
    Si no existe ninguna, se usa la ilustración SVG de respaldo.
    Imágenes de wger.de (licencia CC-BY-SA); el crédito está en el footer.     */
-const IMG_DIR = '';           // imágenes en la misma carpeta que index.html
+const IMG_DIR = '';           // tus 19 fotos viven en la raíz del repo (no en /img/)
 const IMG_EXT = '.jpg';       // si descargaste PNG, cambia esto a '.png'
 
 function fallbackSVG(fig, box){
