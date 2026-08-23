@@ -221,9 +221,18 @@
   .clear-btn{background:transparent;color:var(--rust);border-color:var(--rust);margin-top:12px;font-size:10px;padding:6px 12px}
   .clear-btn:hover{background:var(--rust);color:#fff}
   .log-msg{font-family:"Courier New",monospace;font-size:12px;color:var(--moss);margin-top:10px;min-height:16px}
-  .log-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--line)}
+  .log-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
   .log-row span{font-size:14px}
-  .log-row input{font-family:Georgia,serif;font-size:16px;padding:5px 8px;border:1.5px solid var(--line);background:var(--paper);width:90px;text-align:right}
+  .log-row input{font-family:Georgia,serif;font-size:16px;padding:5px 8px;border:1.5px solid var(--line);background:var(--paper);width:70px;text-align:right}
+  .log-fields{display:flex;gap:14px;align-items:flex-end}
+  .mini{display:inline-flex;align-items:center;gap:5px;font-family:"Courier New",monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  .mini .u{font-size:11px;color:var(--muted)}
+  .barra-tag{font-family:"Courier New",monospace;font-size:9px;font-style:normal;text-transform:uppercase;letter-spacing:.1em;color:#fff;background:var(--steel);padding:2px 6px;border-radius:2px;margin-left:6px}
+  .bar-note{font-family:"Courier New",monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+  @media(max-width:520px){
+    .log-row.barra-row{flex-direction:column;align-items:flex-start;gap:6px}
+    .log-fields{gap:10px}
+  }
   .hist-week{border:1.5px solid var(--line);padding:12px 14px;margin-bottom:10px}
   .hist-week h4{font-family:Georgia,serif;font-size:17px;margin-bottom:6px}
   .hist-week table{margin:0}
@@ -416,8 +425,8 @@
     </div>
 
     <div class="callout" style="padding:16px 20px">
-      <div class="lead">Peso levantado por ejercicio (kg)</div>
-      <div class="sec-tag" style="margin:0 0 8px">Apunta el peso más pesado que hiciste con buena técnica. Deja en blanco lo que no entrenes.</div>
+      <div class="lead">Peso levantado por ejercicio</div>
+      <div class="sec-tag" style="margin:0 0 8px">Placas en lbs (lo que agregas a los lados). En ejercicios con barra, anota también cuánto pesa la barra en kg. Deja en blanco lo que no entrenes.</div>
       <div id="logInputs"></div>
     </div>
 
@@ -648,21 +657,21 @@ F.fly = svg(`
    yt:   ID del video de YouTube (canal de entrenador/fisio) con la técnica  */
 const DAYS = {
   d1:[ // PUSH A — pecho dominante
-    {fig:'bench', img:'bench', name:'Press de banca con barra', target:'Pecho · Tríceps', sets:'4', reps:'6–8', note:'Tu principal para fuerza de empuje. Baja controlado al pecho, empuja fuerte.', wger:'Bench Press Barbell', yt:'rT7DgCr-3pg'},
+    {fig:'bench', img:'bench', name:'Press de banca con barra', barra:true, target:'Pecho · Tríceps', sets:'4', reps:'6–8', note:'Tu principal para fuerza de empuje. Baja controlado al pecho, empuja fuerte.', wger:'Bench Press Barbell', yt:'rT7DgCr-3pg'},
     {fig:'incline', img:'incline', name:'Press inclinado con mancuernas', target:'Pecho alto', sets:'3', reps:'8–10', note:'Banco a 30°. Rango de movimiento completo, no rebotes.', wger:'Incline Dumbbell Press', yt:'8iPEnn-ltC8'},
-    {fig:'ohp', img:'ohp', name:'Press militar de pie (Overhead Press)', target:'Hombro', sets:'3', reps:'8–10', note:'Core apretado, no arquees la espalda baja.', wger:'Overhead Press Barbell', yt:'2yjwXTZQDDI'},
+    {fig:'ohp', img:'ohp', name:'Press militar de pie (Overhead Press)', barra:true, target:'Hombro', sets:'3', reps:'8–10', note:'Core apretado, no arquees la espalda baja.', wger:'Overhead Press Barbell', yt:'2yjwXTZQDDI'},
     {fig:'fly', img:'fly', name:'Aperturas con mancuernas (Chest Fly)', target:'Pecho', sets:'3', reps:'12–15', note:'Codos con ligera flexión fija, controla la bajada.', wger:'Dumbbell Flyes', yt:'eozdVDA78K0'},
     {fig:'dips', img:'dips', name:'Fondos en paralelas (Dips)', target:'Tríceps · Pecho bajo', sets:'3', reps:'8–12', note:'Inclina el torso adelante para más pecho, recto para más tríceps.', wger:'Dips', yt:'2z8JmcrW-As'},
   ],
   d2:[ // PULL A — espalda dominante
-    {fig:'row', img:'row', name:'Remo con barra (Barbell Row)', target:'Espalda · Bíceps', sets:'4', reps:'8–10', note:'Torso ~45°, jala hacia el ombligo, aprieta la espalda.', wger:'Bent Over Barbell Row', yt:'9efgcAjQe7E'},
+    {fig:'row', img:'row', name:'Remo con barra (Barbell Row)', barra:true, target:'Espalda · Bíceps', sets:'4', reps:'8–10', note:'Torso ~45°, jala hacia el ombligo, aprieta la espalda.', wger:'Bent Over Barbell Row', yt:'9efgcAjQe7E'},
     {fig:'pulldown', img:'pulldown', name:'Jalón al pecho (Lat Pulldown)', target:'Dorsales', sets:'4', reps:'10–12', note:'Codos hacia abajo y atrás, no jales con los brazos solo.', wger:'Lat Pulldown', yt:'CAwf7n6Luuc'},
     {fig:'facepull', img:'facepull', name:'Face pull con cuerda', target:'Espalda alta · Hombro post.', sets:'3', reps:'12–15', note:'Jala hacia la cara, codos altos. Ayuda a la postura.', wger:'Face Pull', yt:'rep-qVOkqgk'},
-    {fig:'curl', img:'curl', name:'Curl de bíceps con barra', target:'Bíceps', sets:'3', reps:'10–12', note:'Sin balanceo. Baja lento.', wger:'Biceps Curl Barbell', yt:'kwG2ipFRgfo'},
+    {fig:'curl', img:'curl', name:'Curl de bíceps con barra', barra:true, target:'Bíceps', sets:'3', reps:'10–12', note:'Sin balanceo. Baja lento.', wger:'Biceps Curl Barbell', yt:'kwG2ipFRgfo'},
     {fig:'shrug', img:'shrug', name:'Encogimientos con mancuernas (Shrugs)', target:'Trapecio', sets:'3', reps:'12–15', note:'Sube los hombros directo hacia arriba, pausa 1 seg arriba.', wger:'Shrugs', yt:'g6qbq4Lf1FI'},
   ],
   d3:[ // LEGS A — sentadilla dominante
-    {fig:'squat', img:'squat', name:'Sentadilla con barra (Back Squat)', target:'Cuádriceps · Glúteo', sets:'4', reps:'6–8', note:'El ejercicio rey. Baja hasta muslos paralelos, pecho arriba.', wger:'Squats Barbell', yt:'ultWZbUMPL8'},
+    {fig:'squat', img:'squat', name:'Sentadilla con barra (Back Squat)', barra:true, target:'Cuádriceps · Glúteo', sets:'4', reps:'6–8', note:'El ejercicio rey. Baja hasta muslos paralelos, pecho arriba.', wger:'Squats Barbell', yt:'ultWZbUMPL8'},
     {fig:'legpress', img:'legpress', name:'Prensa de piernas (Leg Press)', target:'Cuádriceps', sets:'3', reps:'10–12', note:'Volumen extra para cuádriceps sin fatigar la espalda.', wger:'Leg Press', yt:'IZxyjW7MPJQ'},
     {fig:'legcurl', img:'legcurl', name:'Curl femoral tumbado (Leg Curl)', target:'Femoral', sets:'3', reps:'12', note:'Aprieta arriba, baja lento.', wger:'Leg Curls', yt:'1Tq3QdYUuHs'},
     {fig:'legext', img:'legext', name:'Extensión de cuádriceps (Leg Extension)', target:'Cuádriceps', sets:'3', reps:'12–15', note:'Aislamiento, aprieta arriba.', wger:'Leg Extensions', yt:'YyvSfVjQeL0'},
@@ -670,7 +679,7 @@ const DAYS = {
   ],
   d4:[ // PUSH B — hombro dominante
     {fig:'ohp', img:'ohp2', name:'Press de hombro con mancuernas', target:'Hombro', sets:'4', reps:'8–10', note:'Mayor rango de movimiento que con barra.', wger:'Dumbbell Shoulder Press', yt:'qEwKCR5JCog'},
-    {fig:'incline', img:'incline', name:'Press inclinado con barra', target:'Pecho alto', sets:'3', reps:'8–10', note:'Banco a 30°. Trabaja la parte superior del pecho.', wger:'Incline Bench Press Barbell', yt:'SrqOu55lrYU'},
+    {fig:'incline', img:'incline', name:'Press inclinado con barra', barra:true, target:'Pecho alto', sets:'3', reps:'8–10', note:'Banco a 30°. Trabaja la parte superior del pecho.', wger:'Incline Bench Press Barbell', yt:'SrqOu55lrYU'},
     {fig:'lateral', img:'lateral', name:'Elevaciones laterales con mancuernas', target:'Hombro lateral', sets:'4', reps:'12–15', note:'El ejercicio que da hombros anchos. Sube a la altura del hombro.', wger:'Lateral Raises', yt:'3VcKaXpzqRo'},
     {fig:'dips', img:'dips', name:'Fondos en banco (Bench Dips)', target:'Tríceps', sets:'3', reps:'10–12', note:'Pies elevados para más dificultad si ya dominas la técnica.', wger:'Bench Dips', yt:'0326dy_-CzM'},
     {fig:'skull', img:'skull', name:'Press francés (Skull Crusher)', target:'Tríceps', sets:'3', reps:'10–12', note:'Solo mueve el antebrazo, codos fijos apuntando arriba.', wger:'Skullcrusher', yt:'d_KZxkY_0cM'},
@@ -683,8 +692,8 @@ const DAYS = {
     {fig:'curl', img:'curl2', name:'Curl inclinado con mancuernas', target:'Bíceps (cabeza larga)', sets:'3', reps:'10–12', note:'Banco a 45°, brazo detrás del torso para más estiramiento.', wger:'Incline Dumbbell Curl', yt:'soxrZlIl35U'},
   ],
   d6:[ // LEGS B — peso muerto dominante
-    {fig:'deadlift', img:'deadlift', name:'Peso muerto convencional (Deadlift)', target:'Cadena posterior', sets:'4', reps:'5', note:'Empieza LIGERO y aprende la técnica. Espalda neutra siempre.', wger:'Deadlift Barbell', yt:'op9kVnSso6Q'},
-    {fig:'rdl', img:'rdl', name:'Peso muerto rumano (RDL)', target:'Femoral · Glúteo', sets:'3', reps:'8–10', note:'Cadera atrás, barra pegada a las piernas, espalda recta.', wger:'Romanian Deadlift', yt:'JCXUYuzwNrM'},
+    {fig:'deadlift', img:'deadlift', name:'Peso muerto convencional (Deadlift)', barra:true, target:'Cadena posterior', sets:'4', reps:'5', note:'Empieza LIGERO y aprende la técnica. Espalda neutra siempre.', wger:'Deadlift Barbell', yt:'op9kVnSso6Q'},
+    {fig:'rdl', img:'rdl', name:'Peso muerto rumano (RDL)', barra:true, target:'Femoral · Glúteo', sets:'3', reps:'8–10', note:'Cadera atrás, barra pegada a las piernas, espalda recta.', wger:'Romanian Deadlift', yt:'JCXUYuzwNrM'},
     {fig:'lunge', img:'lunge', name:'Zancadas con mancuernas (Lunges)', target:'Cuádriceps · Glúteo', sets:'3', reps:'10 c/pierna', note:'Paso largo, rodilla trasera casi al piso.', wger:'Dumbbell Lunges', yt:'D7KaRcUTQeE'},
     {fig:'calf', img:'calf', name:'Elevación de pantorrilla de pie', target:'Pantorrilla', sets:'4', reps:'15', note:'Rango completo, pausa arriba.', wger:'Standing Calf Raises', yt:'JbyjNymZOt0'},
     {fig:'plank', img:'sideplank', name:'Plancha lateral (Side Plank)', target:'Core / oblicuos', sets:'3', reps:'30 s c/lado', note:'Cadera arriba, cuerpo recto.', wger:'Side Plank', yt:'K2VljzCC16g'},
@@ -785,7 +794,9 @@ const STORE_KEY = 'gymProgreso_v1';
 
 // lista plana de todos los ejercicios únicos (por nombre) para los inputs
 const ALL_EX = [];
-Object.values(DAYS).flat().forEach(e=>{ if(!ALL_EX.includes(e.name)) ALL_EX.push(e.name); });
+Object.values(DAYS).flat().forEach(e=>{
+  if(!ALL_EX.some(x=>x.name===e.name)) ALL_EX.push({name:e.name, barra:!!e.barra});
+});
 
 function loadStore(){
   try{ return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; }
@@ -800,11 +811,32 @@ function saveStore(obj){
 function buildInputs(){
   const box = document.getElementById('logInputs');
   if(!box) return;
-  box.innerHTML = ALL_EX.map((name,i)=>`
-    <div class="log-row">
-      <span>${name}</span>
-      <input type="number" step="0.5" min="0" placeholder="kg" data-ex="${i}" id="wt-${i}">
-    </div>`).join('');
+  box.innerHTML = ALL_EX.map((ex,i)=>{
+    if(ex.barra){
+      return `
+      <div class="log-row barra-row">
+        <span>${ex.name} <em class="barra-tag">barra</em></span>
+        <div class="log-fields">
+          <label class="mini">placas
+            <input type="number" step="2.5" min="0" placeholder="lbs" id="wt-${i}">
+            <span class="u">lbs</span>
+          </label>
+          <label class="mini">barra
+            <input type="number" step="0.5" min="0" placeholder="kg" id="bar-${i}">
+            <span class="u">kg</span>
+          </label>
+        </div>
+      </div>`;
+    }
+    return `
+      <div class="log-row">
+        <span>${ex.name}</span>
+        <label class="mini">
+          <input type="number" step="2.5" min="0" placeholder="lbs" id="wt-${i}">
+          <span class="u">lbs</span>
+        </label>
+      </div>`;
+  }).join('');
 }
 
 // pintar el historial guardado, con la diferencia respecto a la semana anterior
@@ -818,15 +850,21 @@ function renderHistory(){
     const rec = store[w];
     const prev = store[w-1];
     const rows = Object.keys(rec.lifts||{}).map(name=>{
-      const now = rec.lifts[name];
+      let cur = rec.lifts[name];
+      if(typeof cur === 'number') cur = { placas:cur, barra:null, legacy:true };
+      const unidad = cur.legacy ? 'kg' : 'lbs';
+      const barTxt = cur.barra!=null ? ` <span class="bar-note">+ barra ${cur.barra} kg</span>` : '';
+
       let delta = '';
-      if(prev && prev.lifts && prev.lifts[name]!=null){
-        const d = (now - prev.lifts[name]);
-        if(d>0) delta = `<span class="delta-up">▲ +${d} kg</span>`;
+      let prevVal = prev && prev.lifts && prev.lifts[name];
+      if(typeof prevVal === 'number') prevVal = { placas:prevVal };
+      if(prevVal && prevVal.placas!=null){
+        const d = +(cur.placas - prevVal.placas).toFixed(1);
+        if(d>0) delta = `<span class="delta-up">▲ +${d} ${unidad}</span>`;
         else if(d===0) delta = `<span class="delta-flat">= igual</span>`;
-        else delta = `<span class="delta-flat">▼ ${d} kg</span>`;
+        else delta = `<span class="delta-flat">▼ ${d} ${unidad}</span>`;
       }
-      return `<tr><td>${name}</td><td class="num">${now} kg</td><td>${delta}</td></tr>`;
+      return `<tr><td>${name}</td><td class="num">${cur.placas} ${unidad}${barTxt}</td><td>${delta}</td></tr>`;
     }).join('');
     const bw = rec.bodyW ? ` · Peso corporal: <b>${rec.bodyW} kg</b>` : '';
     return `<div class="hist-week">
@@ -848,9 +886,16 @@ function wireLog(){
     if(!week){ msg.style.color='var(--rust)'; msg.textContent='Pon un número de semana.'; return; }
     const bodyW = parseFloat(document.getElementById('bodyW').value) || null;
     const lifts = {};
-    ALL_EX.forEach((name,i)=>{
+    ALL_EX.forEach((ex,i)=>{
       const v = parseFloat(document.getElementById('wt-'+i).value);
-      if(!isNaN(v)) lifts[name] = v;
+      if(!isNaN(v)){
+        if(ex.barra){
+          const bar = parseFloat(document.getElementById('bar-'+i).value);
+          lifts[ex.name] = { placas:v, barra:isNaN(bar)?null:bar };
+        }else{
+          lifts[ex.name] = { placas:v, barra:null };
+        }
+      }
     });
     const store = loadStore();
     store[week] = { bodyW, lifts, ts: Date.now() };
